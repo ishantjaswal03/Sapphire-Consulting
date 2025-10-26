@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Sapphire Consulting — Privacy Policy</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://assets.codepen.io" crossorigin>
+    <script src="https://cdn.tailwindcss.com" defer></script>
+    <link rel="preload" href="https://assets.codepen.io/64/Mona-Sans.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
+    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=abel:400"/>
+
+    <style>
+        /* --- keep your existing styles verbatim (trimmed comments only) --- */
+        body { font-family: 'Inter', sans-serif; }
+
+        @font-face {
+          font-family: "Mona Sans";
+          src: url("https://assets.codepen.io/64/Mona-Sans.woff2") format("woff2 supports variations"),
+               url("https://assets.codepen.io/64/Mona-Sans.woff2") format("woff2-variations");
+          font-weight: 100 1000;
+        }
+        @layer properties {
+          @property --bg-position { syntax: "<number>"; inherits: true; initial-value: 100; }
+          @property --after-blur { syntax: "<number>"; inherits: true; initial-value: 0; }
+          @property --after-opacity { syntax: "<number>"; inherits: true; initial-value: 1; }
+          @property --before-opacity { syntax: "<number>"; inherits: true; initial-value: 0.3; }
+          @property --btn-offset { syntax: "<number>"; inherits: true; initial-value: 1; }
+          @property --btn-scale { syntax: "<number>"; inherits: true; initial-value: 1; }
+        }
+        :root {
+          --debug: 0; --btn-bg: #000; --btn-border-width: 1.5; --btn-offset: 1; --btn-scale: 1;
+          --after-bg: linear-gradient(to right, #000, #000, #000, #000);
+          --after-blur: 10; --after-opacity: 1; --after-pos-y: 10; --before-opacity: .3; --bg-position: 100;
+          --color-white:#fff; --color-green-bright:#61FFB1; --color-green-medium:#28b274;
+          --color-green-dark:#40a370; --color-pale-green:hsl(148 100% 95%); --color-red-medium:#ef4444;
+        }
+
+        #hero-content button, .contact-section-form button[type="submit"]{
+          all: unset; background: transparent; border-width:0; transform: scale(var(--btn-scale));
+          transition: --bg-position 3s ease, --after-blur .3s ease, --before-opacity .3s ease, --btn-offset .3s ease, --btn-scale .2s cubic-bezier(.76,-0.25,.51,1.13);
+          outline: calc(var(--debug)*1px) dotted red; outline-offset:-1px;
+        }
+        #hero-content button>div, .contact-section-form button[type="submit"]>div{
+          display:block;padding:.8em 1.2em;background:var(--btn-bg);color:#fff;font-weight:bold;border-radius:8px;font-size:22px;position:relative;cursor:pointer;font-family:"Mona Sans",sans-serif;outline:calc(var(--debug)*1px) dotted red;outline-offset:-1px;
+        }
+        #hero-content button>div:not(:hover), .contact-section-form button[type="submit"]>div:not(:hover){ transition: --after-blur .3s ease; }
+        #hero-content button>div>span, .contact-section-form button[type="submit"]>div>span{
+          background:linear-gradient(to right, var(--color-pale-green), var(--color-green-bright), var(--color-green-medium), var(--color-green-dark), var(--color-green-medium), var(--color-green-bright), var(--color-pale-green)) no-repeat calc(var(--bg-position)*1%) 0%/900%;
+          -webkit-background-clip:text; -webkit-text-fill-color:transparent; letter-spacing:.15ch; font-weight:600; outline:calc(var(--debug)*1px) dotted red; outline-offset:-1px;
+        }
+        #hero-content button>div:after, .contact-section-form button[type="submit"]>div:after{
+          content:""; position:absolute; inset:0; z-index:-2; background:var(--after-bg) no-repeat calc(var(--bg-position)*1%) 0%/900%;
+          transform: translateY(calc(var(--after-pos-y)*1px)); filter: blur(calc(var(--after-blur)*1px)); opacity: var(--after-opacity);
+        }
+        #hero-content button>div:before, .contact-section-form button[type="submit"]>div:before{
+          content:""; position:absolute; width:calc(100% + calc(calc(var(--btn-border-width)*2)*1px)); height:calc(100% + calc(calc(var(--btn-border-width)*2)*1px));
+          background:linear-gradient(to right, var(--color-pale-green), var(--color-green-bright), var(--color-green-medium), var(--color-green-dark), var(--color-green-medium), var(--color-green-bright), var(--color-pale-green)) no-repeat calc(var(--bg-position)*1%) 0%/900%;
+          border-radius:9px; z-index:-1; top:calc(var(--btn-border-width)*-1px); left:calc(var(--btn-border-width)*-1px); opacity:var(--before-opacity);
+        }
+        #hero-content button:hover, .contact-section-form button[type="submit"]:hover{
+          --btn-scale:1.05; --bg-position:0; --after-bg:linear-gradient(to right, var(--color-pale-green), var(--color-green-bright), var(--color-green-medium), var(--color-green-dark), var(--color-green-medium), var(--color-green-bright), var(--color-pale-green));
+          --after-blur:30; --after-opacity:.3; --after-pos-y:0; --before-opacity:1; --btn-offset:5;
+        }
+        #hero-content button:active, .contact-section-form button[type="submit"]{ --btn-scale:.98; --after-blur:15; }
+        .contact-section-form button[type="submit"]>div{ font-size:18px; padding:.6em 1.2em; }
+
+        .nav-container{ perspective:1000px; transform-style:preserve-3d; }
+        ul.desktop-nav{ display:flex; margin:0; padding:0; position:relative; z-index:10; }
+        ul.desktop-nav li{ list-style:none; margin:0 .5rem; }
+        ul.desktop-nav li a{
+          display:block; padding:16px 12px; text-transform:uppercase; position:relative; z-index:2; color:white; font-size:.875rem; letter-spacing:.15em; text-decoration:none; transform:scale(1); transition:all 300ms ease; transform-style:preserve-3d;
+        }
+        ul.desktop-nav li a:hover{ color:black; transform:scale(1.1); }
+        ul.desktop-nav li a:after{
+          content:attr(data-title); position:absolute; top:20%; left:0; right:0; text-align:center; padding:4px 6px; color:transparent; background:#61FFB1; border-radius:4px;
+          transform-origin:50% 0%; backface-visibility:hidden; transform: translate3d(0,105%,0) rotateX(-112deg); transition:all 200ms ease; z-index:-1;
+        }
+        ul.desktop-nav li a:hover:after{ transform: rotateX(0) translateZ(0); }
+
+        .nav-link{ position:relative; z-index:1; isolation:isolate; }
+        .nav-link::before{
+          content:''; position:absolute; top:50%; left:50%; width:90%; height:60%; background:white; border-radius:9999px; filter:blur(12px);
+          transform:translate(-50%,-50%) scale(.8); opacity:0; z-index:-1; transition:opacity .3s, transform .3s;
+        }
+        .nav-link:hover::before{ opacity:.15; transform:translate(-50%,-50%) scale(1.1); }
+
+        .title-with-lines{
+          text-align:center; text-transform:uppercase; font-size:26px; letter-spacing:1px; font-weight:700; color:white;
+          display:grid; grid-template-columns:1fr auto 1fr; grid-gap:22px; align-items:center;
+        }
+        .title-with-lines:before,.title-with-lines:after{ content:" "; display:block; border-bottom:2px solid #40a370; }
+
+        #hero-video-reverse{ transform: scaleX(-1); }
+        .text-glow-green{ color:#61FFB1; text-shadow:0 0 8px #61FFB1, 0 0 12px rgba(97,255,177,.7); }
+
+        .glow-on-hover{
+          padding:.6rem 1.2rem; margin-left:2rem; font-size:.875rem; text-transform:uppercase; letter-spacing:.15em; border:none; outline:none;
+          color:#61FFB1; background:#111; cursor:pointer; position:relative; z-index:0; border-radius:10px; transition:color .3s ease;
+        }
+        .glow-on-hover:before{
+          content:''; background:linear-gradient(45deg,#f00,#ff7300,#fffb00,#48ff00,#00ffd5,#002bff,#7a00ff,#ff00c8,#f00);
+          position:absolute; top:-2px; left:-2px; background-size:400%; z-index:-1; filter:blur(5px);
+          width:calc(100% + 4px); height:calc(100% + 4px); animation:glowing 20s linear infinite; opacity:0; transition:opacity .3s; border-radius:10px;
+        }
+        .glow-on-hover:hover:before{ opacity:1; } .glow-on-hover:hover{ color:white; }
+        .glow-on-hover:after{ z-index:-1; content:''; position:absolute; inset:0; background:#111; border-radius:10px; }
+        @keyframes glowing{ 0%{background-position:0 0} 50%{background-position:400% 0} 100%{background-position:0 0} }
+
+        .tech-tag{ background:#1f2937; color:#d1d5db; font-size:.75rem; font-weight:500; padding:.25rem .75rem; border-radius:9999px; display:inline-block; margin:.25rem; }
+
+        #case-study-modal.hidden{ display:none; }
+        #modal-content ul{ list-style-type:none; padding-left:0; }
+        #modal-content ul li{ position:relative; padding-left:1.25rem; font-size:1rem; color:#d1d5db; margin-bottom:.75rem; }
+        #modal-content.modal-challenge ul li::before{ content:'•'; position:absolute; left:0; color:var(--color-red-medium); font-weight:900; font-size:1rem; line-height:1.25; }
+        #modal-content.modal-solution ul li::before{ content:'•'; position:absolute; left:0; color:var(--color-green-medium); font-weight:900; font-size:1rem; line-height:1.25; }
+
+        /* === THEME MATCHED PAGE LOADER === */
+        #page-loader{
+          position:fixed; inset:0; z-index:99999;
+          display:none; align-items:center; justify-content:center;
+          background:rgba(0,0,0,.88); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+        }
+        #page-loader .loader-orb{
+          width:76px; height:76px; border-radius:9999px;
+          border:4px solid rgba(97,255,177,.18);
+          border-top-color:#61FFB1; border-right-color:#28b274; border-left-color:#40a370;
+          animation:spin .9s linear infinite, orb-glow 1.6s ease-in-out infinite alternate;
+          box-shadow:0 0 22px rgba(97,255,177,.25), inset 0 0 14px rgba(97,255,177,.12);
+        }
+        #page-loader .loader-text{
+          margin-top:14px; font:600 14px/1.2 "Inter",sans-serif; text-transform:uppercase; letter-spacing:.14em;
+          color:#61FFB1; text-shadow:0 0 10px rgba(97,255,177,.5);
+        }
+        @keyframes spin{ to{ transform:rotate(360deg); } }
+        @keyframes orb-glow{
+          0%{ box-shadow:0 0 12px rgba(97,255,177,.20), inset 0 0 8px rgba(97,255,177,.10); }
+          100%{ box-shadow:0 0 24px rgba(97,255,177,.45), inset 0 0 14px rgba(97,255,177,.20); }
+        }
+    </style>
+</head>
+<body class="bg-black min-h-screen">
+
+    <!-- THEME LOADER -->
+    <div id="page-loader" style="display:none;">
+      <div class="loader-orb"></div>
+      <div class="loader-text">Loading…</div>
+    </div>
+
+    <!-- NAVBAR (unchanged layout; links point to this page’s anchors) -->
+    <nav id="navbar" class="sticky top-0 z-50 bg-black text-white p-2 shadow-lg transition-all duration-300">
+        <div class="container mx-auto flex justify-between items-center nav-container">
+            <a href="#hero" class="text-xl font-bold rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 flex items-center">
+                <svg class="h-6 w-6 mr-2 text-[#40a370]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1 15h2v-2h-2v2zm0-4h2V7h-2v6z"/></svg>
+                Sapphire Consulting
+            </a>
+            <div class="hidden md:flex items-center">
+                <ul class="desktop-nav">
+                    <li><a href="#hero" data-title="Home">Home</a></li>
+                    <li><a href="#privacy" data-title="Privacy">Privacy</a></li>
+                    <li><a href="#contact" data-title="Contact">Contact</a></li>
+                </ul>
+                <!-- Contact button removed from navbar (as requested) -->
+            </div>
+            <button class="md:hidden p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-white" id="mobile-menu-button">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+            </button>
+        </div>
+        <div class="hidden md:hidden mt-4" id="mobile-menu">
+             <a href="#hero" class="nav-link block text-center py-2 px-4 text-sm hover:bg-gray-800 rounded-lg transition-all duration-200 hover:text-[#61FFB1] hover:scale-110">Home</a>
+             <a href="#privacy" class="nav-link block text-center py-2 px-4 text-sm hover:bg-gray-800 rounded-lg transition-all duration-200 hover:text-[#61FFB1] hover:scale-110">Privacy</a>
+             <a href="#contact" class="nav-link block text-center py-2 px-4 text-sm hover:bg-gray-800 rounded-lg transition-all duration-200 hover:text-[#61FFB1] hover:scale-110">Contact</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="relative text-white min-h-[50vh] overflow-hidden flex items-center" id="hero">
+        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0 blur-sm transition-opacity duration-1000" id="hero-video">
+            <source src="Hero_section_background.mp4" type="video/mp4">Your browser does not support the video tag.
+        </video>
+        <video autoplay loop muted playsinline class="absolute top-0 left-0 w-full h-full object-cover z-0 blur-sm transition-opacity duration-1000 opacity-0" id="hero-video-reverse">
+            <source src="Hero_section_background.mp4" type="video/mp4">Your browser does not support the video tag.
+        </video>
+        <div id="hero-overlay" class="absolute inset-0 bg-black opacity-60 z-10"></div>
+        <div id="hero-content" class="container mx-auto px-4 relative z-20 text-center py-24">
+            <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-4 max-w-4xl mx-auto">
+                <span class="text-glow-green">Privacy</span> Policy
+            </h1>
+            <p class="text-base md:text-lg text-gray-200 max-w-2xl mx-auto">
+                Your trust matters. This page explains what we collect, why we collect it, and how we protect it.
+            </p>
+        </div>
+    </section>
+
+    <!-- PRIVACY -->
+    <section id="privacy" class="bg-black text-white py-20">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="title-with-lines mb-4">Privacy Policy</h2>
+          <p class="text-gray-300">Last updated: October 26, 2025</p>
+        </div>
+
+        <div class="max-w-4xl mx-auto space-y-10 text-gray-200 leading-7">
+          <section>
+            <h3 class="text-xl font-semibold text-[#61FFB1] mb-3">1. Who We Are</h3>
+            <p>Sapphire Consulting LLC (“Sapphire Consulting,” “we,” “us,” or “our”) provides software development, digital transformation, and consulting services. This Privacy Policy describes how we handle personal information in connection with our websites, products, and services (collectively, the “Services”).</p>
+          </section>
+
+          <section>
+            <h3 class="text-xl font-semibold text-[#61FFB1] mb-3">2. Information We Collect</h3>
+            <ul class="list-disc pl-6 space-y-2">
+              <li><span class="font-medium">Information you provide</span> (e.g., name, email, company, project details) via contact forms, sign-ups, or contracts.</li>
+              <li><span class="font-medium">Automatic data</span> (e.g., IP address, device and browser info, pages viewed, timestamps) collected via cookies and similar technologies.</li>
+              <li><span class="font-medium">Business information</span> necessary to perform an engagement, such as technical requirements and content you supply.</li>
+              <li><span class="font-medium">Communications</span> (e.g., emails, support messages, call notes) for client service and recordkeeping.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3 class="text-xl font-semibold text-[#61FFB1] mb-3">3. How We Use Information</h3>
+            <ul class="list-disc pl-6 space-y-2">
+              <li>Provide, operate, and improve the Services and deliverables.</li>
+              <li>Respond to inquiries, schedule consultations, and manage client relationships.</li>
+              <li>Customize content, perform analytics, and enhance user experience.</li>
+              <li>Secure our systems, prevent fraud, and enforce agreements.</li>
+              <li>Comply with legal obligations and exercise legal claims.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3 class="text-xl font-semibold text-[#61FFB1] mb-3">4. Legal Bases (EEA/UK users)</h3>
+            <p>Where applicable, we process personal data based on: (i) <span class="font-medium">contract necessity</span>, (ii) <span class="font-medium">legitimate interests</span> (e.g., improving Services, securing systems), (iii) <span class="font-medium">consent</span> (e.g., certain cookies/marketing), and (iv) <span class="font-medium">legal obligations</span>.</p>
+          </section>
+
+          <section>
+            <h3 class="text-xl font-semibold text-[#61FFB1] mb-3">5. Cookies & Analytics</h3>
+            <p>We may use cookies, local storage, and analytics tools to understand usage and improve performance. You can control cookies via your browser settings. Blocking some cookies may affect site functionality.</p>
+          </section>
+
+          <section>
+            <h3 class="text-xl font-semibold text-[#61FFB1] mb-3">6. Sharing of Information</h3>
+            <ul class="list-disc pl-6 space-y-2">
+              <li><span class="font-medium">Vendors/Processors</span> who assist us with hosting, security, analytics, communications, or project delivery (bound by confidentiality and data processing terms).</li>
+              <li><span class="font-medium">Business transfers</span> (e.g., merger, acquisition, financing, or sale of assets).</li>
+              <li><span class="font-medium">Legal and safety</span> (compelled disclosures, protecting rights, preventing harm or fraud).</li>
+              <li><span class="font-medium">With your consent</span> or at your direction.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3 class="text-xl font-semibold text-[#61FFB1] mb-3">7. International Transfers</h3>
+            <p>We may process information in the United States and other countries. Where required, we implement appropriate safeguards (e.g., standard contractual clauses) for cross-border transfers.</p>
+          </section>
+
+          <section>
+            <h3 class="text-xl font-semibold text-[#61FFB1] mb-3">8. Data Retention</h3>
+            <p>We retain personal information for as long as necessary to provide the Services, comply with legal obligations, resolve disputes, and enforce agreements. Retention periods vary by data type and purpose.</p>
+          </section>
+
+          <section>
+            <h3 class="text-xl font-semibold text-[#61FFB1] mb-3">9. Security</h3>
+            <p>We use reasonable administrative, technical, and physical safeguards appropriate to the nature of the data and our business. No method of transmission or storage is 100% secure.</p>
+          </section>
+
+          <section>
+            <h3 class="text-xl font-semibold text-[#61FFB1] mb-3">10. Your Rights</h3>
+            <p>Subject to applicable laws, you may have rights to access, correct, delete, or restrict processing of your personal data; to data portability; and to object to certain processing. You may also withdraw consent where processing is based on consent.</p>
+            <ul class="list-disc pl-6 mt-3 space-y-2">
+              <li><span class="font-medium">EEA/UK:</span> You can lodge a complaint with your local supervisory authority.</li>
+              <li><span class="font-medium">California (CCPA/CPRA):</span> You may request disclosure, correction, deletion, and opt-out of sale/share of personal information. We do not sell personal information as defined by CCPA/CPRA.</li>
+            </ul>
+            <p class="mt-3">To exercise rights, email us at <a href="mailto:contact@sapphiretechconsulting.io" class="text-[#61FFB1] underline underline-offset-2">contact@sapphiretechconsulting.io</a>.</p>
+          </section>
+
+          <section>
+            <h3 class="text-xl font-semibold text-[#61FFB1] mb-3">11. Children’s Privacy</h3>
+            <p>Our Services are not directed to children under 13 (or 16 where applicable). We do not knowingly collect personal information from children. If you believe a child has provided us information, contact us to request deletion.</p>
+          </section>
+
+          <section>
+            <h3 class="text-xl font-semibold text-[#61FFB1] mb-3">12. Do Not Track</h3>
+            <p>Some browsers offer “Do Not Track” signals. We currently do not respond to DNT signals. We will update this Policy if that changes.</p>
+          </section>
+
+          <section>
+            <h3 class="text-xl font-semibold text-[#61FFB1] mb-3">13. Changes to This Policy</h3>
+            <p>We may update this Policy from time to time. Material changes will be reflected by updating the “Last updated” date above. Your continued use of the Services after changes indicates acceptance.</p>
+          </section>
+
+          <section>
+            <h3 class="text-xl font-semibold text-[#61FFB1] mb-3">14. Contact Us</h3>
+            <p>Questions or requests? Email <a href="mailto:contact@sapphiretechconsulting.io" class="text-[#61FFB1] underline underline-offset-2">contact@sapphiretechconsulting.io</a> or write to: 2125 Biscayne Blvd, Miami, FL 33137, USA.</p>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT (unchanged) -->
+    <section id="contact" class="bg-black text-white py-24">
+      <div class="container mx-auto px-4">
+
+        <div class="text-center mb-24">
+            <h2 class="title-with-lines mb-4">Start Your Project Journey</h2>
+            <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+                Schedule a complimentary discovery call with our team to discuss your project in detail.
+            </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+          <div class="rounded-2xl p-8 md:p-10 bg-gradient-to-br from-emerald-900 via-teal-800 to-emerald-600 text-white shadow-xl">
+            <h2 class="text-3xl font-bold mb-8">Get In Touch</h2>
+
+            <div class="flex items-start gap-4 mb-8">
+              <div class="shrink-0 mt-0.5">
+                <svg class="w-6 h-6 text-emerald-200" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l3.5 2M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold text-emerald-100">Business Hours</p>
+                <p class="text-emerald-50/90">Mon–Fri: 9:00 AM – 6:00 PM EST</p>
+                <p class="text-emerald-50/90">Weekend: By Appointment</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="shrink-0 mt-0.5">
+                <svg class="w-6 h-6 text-emerald-200" fill="none" stroke="currentColor" stroke-width="1.75" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5V6.75A1.75 1.75 0 0 0 13.25 5h-7.5A1.75 1.75 0 0 0 4 6.75v10.5A1.75 1.75 0 0 0 5.75 19h7.5A1.75 1.75 0 0 0 15 17.25V13l5 3V7l-5 3z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-semibold text-emerald-100">Free Consultation</p>
+                <p class="text-emerald-50/90">
+                  Schedule a 30-minute discovery call to discuss your project needs.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: Form (unchanged) -->
+          <div class="bg-gray-950 border border-gray-800 rounded-2xl p-8 md:p-10 shadow-xl contact-section-form">
+            <form id="contact-form" class="space-y-6" action="#" method="post">
+              <div>
+                <label for="fullName" class="block text-sm font-medium text-gray-200 mb-1">Full Name <span class="text-emerald-400">*</span></label>
+                <input id="fullName" name="fullName" type="text" required
+                       class="w-full rounded-md bg-gray-950 border border-gray-800 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400"
+                       placeholder="Jane Doe">
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-200 mb-1">Email Address <span class="text-emerald-400">*</span></label>
+                <input id="email" name="email" type="email" required
+                       class="w-full rounded-md bg-gray-950 border border-gray-800 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400"
+                       placeholder="jane@company.com">
+              </div>
+
+              <div>
+                <label for="company" class="block text-sm font-medium text-gray-200 mb-1">Company / Organization</label>
+                <input id="company" name="company" type="text"
+                       class="w-full rounded-md bg-gray-950 border border-gray-800 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400"
+                       placeholder="Your company (optional)">
+              </div>
+
+              <div>
+                <label for="industry" class="block text sm font-medium text-gray-200 mb-1">Industry Focus</label>
+                <select id="industry" name="industry"
+                        class="w-full rounded-md bg-gray-950 border border-gray-800 px-4 py-3 text-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400">
+                  <option value="">Select your industry</option>
+                  <option>Healthcare</option>
+                  <option>Education</option>
+                  <option>Marketing / MarTech</option>
+                  <option>Financial Services / FinTech</option>
+                  <option>E-Commerce</option>
+                  <option>Cloud / DevOps</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="details" class="block text-sm font-medium text-gray-200 mb-1">Project Details <span class="text-emerald-400">*</span></label>
+                <textarea id="details" name="details" rows="6" required
+                          class="w-full rounded-md bg-gray-950 border border-gray-800 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400"
+                          placeholder="Please describe your project requirements, timeline, and any specific technical needs..."></textarea>
+              </div>
+
+              <div class="pt-2">
+                <button type="submit">
+                  <div>
+                    <span>Send Project Request</span>
+                  </div>
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER (unchanged) -->
+    <footer class="bg-black text-white border-t border-gray-800 pt-16 pb-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 border-b border-gray-700 pb-12">
+                <div class="col-span-2 md:col-span-1">
+                    <h4 class="text-lg font-semibold text-[#61FFB1] mb-4 border-b border-gray-700 pb-2">Sapphire Consulting LLC</h4>
+                    <p class="text-gray-400 max-w-sm mb-6 text-sm">
+                        Transforming businesses through innovative technology solutions and expert consulting services across healthcare, education, marketing, and financial sectors.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-[#61FFB1] transition-colors" aria-label="LinkedIn">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.529-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.784 7 2.457v6.778z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-[#61FFB1] transition-colors" aria-label="Twitter/X">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19.633 7.994a8.216 8.216 0 0 0 2.37-3.238 4.093 4.093 0 0 1-2.722 1.127 4.148 4.148 0 0 0-3.033-1.284 4.137 4.137 0 0 0-4.138 4.138c0 .324.036.64.108.948A11.776 11.776 0 0 1 3.51 3.998a4.137 4.137 0 0 0 1.282 5.514 4.103 4.103 0 0 1-1.876-.518v.052a4.138 4.138 0 0 0 3.31 4.053 4.129 4.129 0 0 1-1.868.07 4.137 4.137 0 0 0 3.864 2.868A8.307 8.307 0 0 1 2 18.067a11.71 11.71 0 0 0 6.37 1.868c7.636 0 11.82-6.315 11.82-11.823 0-.18-.004-.36-.012-.538a8.497 8.497 0 0 0 2.083-2.164z"/></svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-[#61FFB1] transition-colors" aria-label="GitHub">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.419 2.864 8.136 6.839 9.48.5.092.682-.217.682-.483 0-.237-.008-.867-.013-1.7-2.782.604-3.37-1.341-3.37-1.341-.454-1.15-.11-1.451-.11-1.451.93-.635.07-1.411.07-1.411-1.036.738-2.148-.231-2.148-.231-.418-1.059.1-1.078.1-1.078.694-.59 1.121-.99 1.121-.99.654-.925 1.717-.655 2.138-.499.07-.387.271-.655.494-.805-1.895-.213-3.881-.948-3.881-4.218 0-.93.33-1.69.873-2.288-.088-.214-.383-1.083.083-2.257 0 0 .713-.228 2.34-.877 1.705.467 3.535.467 5.24 0 1.627.65 2.34.877 2.34.877.466 1.174.171 2.043.083 2.257.544.598.873 1.358.873 2.288 0 3.279-1.989 4.004-3.889 4.212.281.242.531.743.531 1.503 0 1.082-.009 1.95-.009 2.215 0 .269.18.579.687.48 3.978-1.346 6.832-5.064 6.832-9.483C22 6.477 17.523 2 12 2z" clip-rule="evenodd"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-[#61FFB1] mb-4 border-b border-gray-700 pb-2">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-[#61FFB1] transition-colors text-sm">Custom Software Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-[#61FFB1] transition-colors text-sm">Mobile & Web Applications</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-[#61FFB1] transition-colors text-sm">HIPAA Compliance Solutions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-[#61FFB1] transition-colors text-sm">MarTech & Analytics</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-[#61FFB1] transition-colors text-sm">EdTech Solutions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-[#61FFB1] transition-colors text-sm">Digital Transformation</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-[#61FFB1] mb-4 border-b border-gray-700 pb-2">Industries</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-[#61FFB1] transition-colors text-sm">Healthcare Technology</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-[#61FFB1] transition-colors text-sm">Educational Technology</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-[#61FFB1] transition-colors text-sm">Marketing Technology</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-[#61FFB1] transition-colors text-sm">Financial Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-[#61FFB1] transition-colors text-sm">E-commerce Solutions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-[#61FFB1] transition-colors text-sm">Free Consultation</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-semibold text-[#61FFB1] mb-4 border-b border-gray-700 pb-2">Contact Info</h4>
+                    <ul class="space-y-3">
+                        <li class="text-gray-400 text-sm">2125 Biscayne Blvd</li>
+                        <li class="text-gray-400 text sm">Miami, FL 33137, USA</li>
+                        <li><a href="mailto:contact@sapphiretechconsulting.io" class="text-gray-400 hover:text-[#61FFB1] transition-colors text-sm">contact@sapphiretechconsulting.io</a></li>
+                        <li class="text-gray-400 text-sm">Mon–Fri: 9:00 AM – 6:00 PM EST</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-center pt-8">
+                <p class="text-gray-500 text-sm">&copy; 2025 Sapphire Consulting LLC. All rights reserved.</p>
+                <div class="mt-2 text-xs text-gray-600">
+                    <a href="#" class="hover:text-gray-400 mr-4">Privacy Policy</a>
+                    <a href="terms.html" class="hover:text-gray-400">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+
+    <!-- Show loader during page navigations (prevents flash) -->
+    <script>
+      (function(){
+        const loader = document.getElementById('page-loader');
+        if(!loader) return;
+        const show = () => { loader.style.display = 'flex'; };
+        const hide = () => { loader.style.display = 'none'; };
+
+        // Hide on render / bfcache restore
+        window.addEventListener('pageshow', hide, { once:true });
+
+        function shouldShowFor(href, el){
+          if(!href) return false;
+          if(href.startsWith('#')) return false;                 // same-page anchors
+          if(/^mailto:|^tel:/.test(href)) return false;          // mail/phone
+          if(el && el.target === '_blank') return false;         // new tab
+          return true;                                           // other navigations
+        }
+
+        // Clicked links
+        document.addEventListener('click', (e) => {
+          const a = e.target.closest('a[href]');
+          if(!a) return;
+          const href = a.getAttribute('href');
+          if(shouldShowFor(href, a)){ requestAnimationFrame(show); }
+        });
+
+        // Programmatic/unload navigations
+        window.addEventListener('beforeunload', show);
+      })();
+    </script>
+
+    <!-- Modal shell (unchanged / harmless) -->
+    <div id="case-study-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black bg-opacity-70 backdrop-blur-sm hidden">
+        <div class="bg-gray-900 border border-gray-700 rounded-lg shadow-2xl max-w-2xl w-full overflow-hidden max-h-[90vh] flex flex-col">
+            <div class="flex justify-between items-center p-4 border-b border-gray-700 flex-shrink-0">
+                <h3 id="modal-title" class="text-xl font-semibold text-white">Modal Title</h3>
+                <button id="modal-close-btn" class="text-gray-400 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                </button>
+            </div>
+            <div id="modal-content" class="p-6 text-gray-300 overflow-y-auto"></div>
+        </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Mobile menu
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        if (menuButton) {
+          menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+          });
+        }
+        const navLinks = mobileMenu ? mobileMenu.querySelectorAll('a') : [];
+        navLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+          });
+        });
+        document.addEventListener('click', (e) => {
+          if (mobileMenu && menuButton && !mobileMenu.classList.contains('hidden')) {
+            const isInside = mobileMenu.contains(e.target) || menuButton.contains(e.target);
+            if (!isInside) {
+              mobileMenu.classList.add('hidden');
+              document.body.classList.remove('overflow-hidden');
+            }
+          }
+        });
+
+        // Smooth scroll
+        function setupSmoothScrolling() {
+          const allNavLinks = document.querySelectorAll('#navbar a[href^="#"]');
+          const footerLinks = document.querySelectorAll('footer a[href^="#"]');
+          [...allNavLinks, ...footerLinks].forEach(link => {
+            const targetId = link.getAttribute('href').substring(1);
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) {
+              link.addEventListener('click', (e) => {
+                e.preventDefault();
+                targetEl.scrollIntoView({ behavior: 'smooth' });
+              });
+            }
+          });
+        }
+        setupSmoothScrolling();
+
+        // Video loop & crossfade
+        const navbar = document.getElementById('navbar');
+        const heroVideo = document.getElementById('hero-video');
+        const heroVideoReverse = document.getElementById('hero-video-reverse');
+        let isNavbarBlurred = false, lastScrollY = 0;
+
+        function setupVideoLooping(video){
+          if (!video) return;
+          video.addEventListener('timeupdate', function(){
+            if (this.duration && (this.duration - this.currentTime <= 0.3)) { this.currentTime = 0; this.play(); }
+          });
+          video.addEventListener('ended', function(){ this.currentTime = 0; this.play(); });
+        }
+        function createVideoSwitcher(v1, v2){
+          let current = 0;
+          return function(){
+            if (!v1 || !v2) return;
+            if (current === 0){ v1.classList.add('opacity-0'); v2.classList.remove('opacity-0'); current = 1; }
+            else { v2.classList.add('opacity-0'); v1.classList.remove('opacity-0'); current = 0; }
+          }
+        }
+        if (heroVideo && heroVideoReverse){
+          setupVideoLooping(heroVideo);
+          setupVideoLooping(heroVideoReverse);
+          setInterval(createVideoSwitcher(heroVideo, heroVideoReverse), 8000);
+        }
+
+        // Navbar scroll behavior
+        window.addEventListener('scroll', () => {
+          const y = window.scrollY;
+          if (navbar){
+            if (y > 10 && !isNavbarBlurred){ navbar.classList.add('bg-black/70','backdrop-blur-2xl'); navbar.classList.remove('bg-black'); isNavbarBlurred = true; }
+            else if (y <= 5 && isNavbarBlurred){ navbar.classList.remove('bg-black/70','backdrop-blur-2xl'); navbar.classList.add('bg-black'); isNavbarBlurred = false; }
+            navbar.style.transform = (y > lastScrollY && y > 100) ? 'translateY(-100%)' : 'translateY(0)';
+          }
+          lastScrollY = y <= 0 ? 0 : y;
+        });
+
+        // Contact CTA scroll (safe even if button not present)
+        const contactBtn = document.querySelector('.glow-on-hover');
+        const contactSection = document.getElementById('contact');
+        if (contactBtn && contactSection){
+          contactBtn.addEventListener('click', () => contactSection.scrollIntoView({ behavior: 'smooth' }));
+        }
+
+        // Splitting init (harmless if not used)
+        Splitting();
+
+        // Modal close
+        const modal = document.getElementById('case-study-modal');
+        const modalCloseBtn = document.getElementById('modal-close-btn');
+        if (modal && modalCloseBtn){
+          const closeModal = () => modal.classList.add('hidden');
+          modalCloseBtn.addEventListener('click', closeModal);
+          modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+        }
+      });
+    </script>
+</body>
+</html>
