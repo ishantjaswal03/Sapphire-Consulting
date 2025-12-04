@@ -61,7 +61,7 @@ const HealthcareTechnology = () => {
                     ref={heroRef}
                     className="absolute inset-0 z-0"
                     style={{
-                        backgroundImage: 'url("/healthcare_hero.png")',
+                        backgroundImage: `url("${import.meta.env.BASE_URL}healthcare_hero.png")`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center 30%', // Adjusted for better focus
                     }}
@@ -101,12 +101,12 @@ const HealthcareTechnology = () => {
                         <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Why Healthcare Teams Choose Sapphire</h2>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {[
-                                { title: "Built for Clinical Reality", desc: "We design with doctors, nurses, admin staff, and patients in mind, not just the tech stack.", img: "/clinical_reality.png" },
-                                { title: "Security First", desc: "Every solution is architected with data protection, privacy, and compliance at the core.", img: "/security_first.png" },
-                                { title: "Scalable Foundations", desc: "Cloud-native, API-first architectures ready to support growth and peak loads.", img: "/scalable_foundations.png" },
-                                { title: "Interoperable by Design", desc: "We integrate with existing EHR, LIS, RIS, and hospital systems to avoid “rip and replace.”", img: "/interoperable_design.png" },
-                                { title: "Experience Across Care Settings", desc: "Hospitals, multi-specialty clinics, diagnostics, telehealth startups, insurers, and digital health platforms.", img: "/care_settings.png" },
-                                { title: "Data-Driven Intelligence", desc: "Transforming raw health data into actionable insights for better clinical outcomes and operational efficiency.", img: "/scalable_foundations.png" },
+                                { title: "Built for Clinical Reality", desc: "We design with doctors, nurses, admin staff, and patients in mind, not just the tech stack.", img: `${import.meta.env.BASE_URL}clinical_reality.png` },
+                                { title: "Security First", desc: "Every solution is architected with data protection, privacy, and compliance at the core.", img: `${import.meta.env.BASE_URL}security_first.png` },
+                                { title: "Scalable Foundations", desc: "Cloud-native, API-first architectures ready to support growth and peak loads.", img: `${import.meta.env.BASE_URL}scalable_foundations.png` },
+                                { title: "Interoperable by Design", desc: "We integrate with existing EHR, LIS, RIS, and hospital systems to avoid “rip and replace.”", img: `${import.meta.env.BASE_URL}interoperable_design.png` },
+                                { title: "Experience Across Care Settings", desc: "Hospitals, multi-specialty clinics, diagnostics, telehealth startups, insurers, and digital health platforms.", img: `${import.meta.env.BASE_URL}care_settings.png` },
+                                { title: "Data-Driven Intelligence", desc: "Transforming raw health data into actionable insights for better clinical outcomes and operational efficiency.", img: `${import.meta.env.BASE_URL}scalable_foundations.png` },
                             ].map((item, i) => (
                                 <NeonGlassCard key={i} {...item} index={i} />
                             ))}
@@ -115,7 +115,7 @@ const HealthcareTechnology = () => {
                 </div>
 
                 <ProvenImpact
-                    backgroundImage="/healthcare_hero.png"
+                    backgroundImage={`${import.meta.env.BASE_URL}healthcare_hero.png`}
                     stats={[
                         { val: "40%", label: "Efficiency Increase", sub: "in administrative and clinical workflows" },
                         { val: "2.5x", label: "Faster Diagnosis", sub: "through AI-assisted imaging and analysis" },

@@ -61,7 +61,7 @@ const EducationalPlatforms = () => {
                     ref={heroRef}
                     className="absolute inset-0 z-0"
                     style={{
-                        backgroundImage: 'url("/education_hero.png")',
+                        backgroundImage: `url("${import.meta.env.BASE_URL}education_hero.png")`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                     }}
@@ -101,12 +101,12 @@ const EducationalPlatforms = () => {
                         <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Why Educational Institutions Choose Sapphire</h2>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {[
-                                { title: "Student-Centric Design", desc: "We design with students, teachers, and administrators in mind, creating engaging and intuitive learning experiences.", img: "/student_centric.png" },
-                                { title: "Scalable Infrastructure", desc: "Cloud-native architectures that support growth from classrooms to global online universities.", img: "/scalable_infra_edu.png" },
-                                { title: "Seamless Integration", desc: "Connect with existing SIS, LMS, and third-party tools to create a unified educational ecosystem.", img: "/integration_edu.png" },
-                                { title: "Engagement & Analytics", desc: "Real-time insights into student performance, engagement metrics, and predictive analytics for intervention.", img: "/analytics_edu.png" },
-                                { title: "Accessibility First", desc: "WCAG-compliant platforms ensuring every student has equal access to educational resources.", img: "/accessibility_edu.png" },
-                                { title: "Gamification & Interactive Learning", desc: "Incorporating game mechanics, simulations, and interactive content to boost engagement and retention.", img: "/gamification_edu.png" },
+                                { title: "Student-Centric Design", desc: "We design with students, teachers, and administrators in mind, creating engaging and intuitive learning experiences.", img: `${import.meta.env.BASE_URL}student_centric.png` },
+                                { title: "Scalable Infrastructure", desc: "Cloud-native architectures that support growth from classrooms to global online universities.", img: `${import.meta.env.BASE_URL}scalable_infra_edu.png` },
+                                { title: "Seamless Integration", desc: "Connect with existing SIS, LMS, and third-party tools to create a unified educational ecosystem.", img: `${import.meta.env.BASE_URL}integration_edu.png` },
+                                { title: "Engagement & Analytics", desc: "Real-time insights into student performance, engagement metrics, and predictive analytics for intervention.", img: `${import.meta.env.BASE_URL}analytics_edu.png` },
+                                { title: "Accessibility First", desc: "WCAG-compliant platforms ensuring every student has equal access to educational resources.", img: `${import.meta.env.BASE_URL}accessibility_edu.png` },
+                                { title: "Gamification & Interactive Learning", desc: "Incorporating game mechanics, simulations, and interactive content to boost engagement and retention.", img: `${import.meta.env.BASE_URL}gamification_edu.png` },
                             ].map((item, i) => (
                                 <NeonGlassCard key={i} {...item} index={i} />
                             ))}
@@ -115,7 +115,7 @@ const EducationalPlatforms = () => {
                 </div>
 
                 <ProvenImpact
-                    backgroundImage="/education_hero.png"
+                    backgroundImage={`${import.meta.env.BASE_URL}education_hero.png`}
                     stats={[
                         { val: "95%", label: "Student Engagement", sub: "increase through interactive learning modules" },
                         { val: "30%", label: "Better Outcomes", sub: "in standardized test scores and retention" },

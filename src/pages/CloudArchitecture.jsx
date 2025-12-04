@@ -61,7 +61,7 @@ const CloudArchitecture = () => {
                     ref={heroRef}
                     className="absolute inset-0 z-0"
                     style={{
-                        backgroundImage: 'url("/cloud_hero.jpg")',
+                        backgroundImage: `url("${import.meta.env.BASE_URL}cloud_hero.jpg")`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                     }}
@@ -101,12 +101,12 @@ const CloudArchitecture = () => {
                         <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Why Enterprises Choose Sapphire</h2>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {[
-                                { title: "Multi-Cloud Expertise", desc: "Deep experience across AWS, Azure, and Google Cloud to design the best solution for your needs.", img: "/multi_cloud.jpg" },
-                                { title: "Security-First Design", desc: "Zero-trust architectures, encryption, compliance frameworks, and continuous security monitoring.", img: "/security_cloud.jpg" },
-                                { title: "Cost Optimization", desc: "Right-sizing, reserved instances, spot instances, and automated cost monitoring to maximize ROI.", img: "/cost_optimization.jpg" },
-                                { title: "DevOps Integration", desc: "CI/CD pipelines, infrastructure as code, and automated deployments for rapid iteration.", img: "/devops_integration.jpg" },
-                                { title: "High Availability & DR", desc: "Fault-tolerant designs with disaster recovery and business continuity planning built-in.", img: "/high_availability.jpg" },
-                                { title: "Observability & Monitoring", desc: "Comprehensive logging, metrics, tracing, and alerting for proactive issue resolution.", img: "/observability.jpg" },
+                                { title: "Multi-Cloud Expertise", desc: "Deep experience across AWS, Azure, and Google Cloud to design the best solution for your needs.", img: `${import.meta.env.BASE_URL}multi_cloud.jpg` },
+                                { title: "Security-First Design", desc: "Zero-trust architectures, encryption, compliance frameworks, and continuous security monitoring.", img: `${import.meta.env.BASE_URL}security_cloud.jpg` },
+                                { title: "Cost Optimization", desc: "Right-sizing, reserved instances, spot instances, and automated cost monitoring to maximize ROI.", img: `${import.meta.env.BASE_URL}cost_optimization.jpg` },
+                                { title: "DevOps Integration", desc: "CI/CD pipelines, infrastructure as code, and automated deployments for rapid iteration.", img: `${import.meta.env.BASE_URL}devops_integration.jpg` },
+                                { title: "High Availability & DR", desc: "Fault-tolerant designs with disaster recovery and business continuity planning built-in.", img: `${import.meta.env.BASE_URL}high_availability.jpg` },
+                                { title: "Observability & Monitoring", desc: "Comprehensive logging, metrics, tracing, and alerting for proactive issue resolution.", img: `${import.meta.env.BASE_URL}observability.jpg` },
                             ].map((item, i) => (
                                 <NeonGlassCard key={i} {...item} index={i} />
                             ))}
@@ -115,7 +115,7 @@ const CloudArchitecture = () => {
                 </div>
 
                 <ProvenImpact
-                    backgroundImage="/cloud_hero.jpg"
+                    backgroundImage={`${import.meta.env.BASE_URL}cloud_hero.jpg`}
                     stats={[
                         { val: "70%", label: "Cost Reduction", sub: "through cloud optimization and rightsizing" },
                         { val: "99.99%", label: "Uptime", sub: "with fault-tolerant architecture" },

@@ -61,7 +61,7 @@ const DataAnalytics = () => {
                     ref={heroRef}
                     className="absolute inset-0 z-0"
                     style={{
-                        backgroundImage: 'url("/data_hero.jpg")',
+                        backgroundImage: `url("${import.meta.env.BASE_URL}data_hero.jpg")`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                     }}
@@ -101,12 +101,12 @@ const DataAnalytics = () => {
                         <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Why Data Teams Choose Sapphire</h2>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {[
-                                { title: "End-to-End Solutions", desc: "From data ingestion to visualization, we handle the entire analytics pipeline with modern tools and best practices.", img: "/end_to_end.jpg" },
-                                { title: "Real-Time Analytics", desc: "Stream processing and real-time dashboards for immediate insights and proactive decision-making.", img: "/realtime_analytics.jpg" },
-                                { title: "AI & Machine Learning", desc: "Predictive models, anomaly detection, forecasting, and recommendation engines built into your workflows.", img: "/ai_ml.jpg" },
-                                { title: "Scalable Data Platforms", desc: "Cloud-native data lakes and warehouses that grow with your business without performance degradation.", img: "/scalable_data.jpg" },
-                                { title: "Self-Service BI", desc: "Empower business users with intuitive dashboards and drag-and-drop analytics without IT dependency.", img: "/self_service_bi.jpg" },
-                                { title: "Data Governance", desc: "Quality frameworks, lineage tracking, access controls, and compliance to ensure trusted data.", img: "/data_governance.jpg" },
+                                { title: "End-to-End Solutions", desc: "From data ingestion to visualization, we handle the entire analytics pipeline with modern tools and best practices.", img: `${import.meta.env.BASE_URL}end_to_end.jpg` },
+                                { title: "Real-Time Analytics", desc: "Stream processing and real-time dashboards for immediate insights and proactive decision-making.", img: `${import.meta.env.BASE_URL}realtime_analytics.jpg` },
+                                { title: "AI & Machine Learning", desc: "Predictive models, anomaly detection, forecasting, and recommendation engines built into your workflows.", img: `${import.meta.env.BASE_URL}ai_ml.jpg` },
+                                { title: "Scalable Data Platforms", desc: "Cloud-native data lakes and warehouses that grow with your business without performance degradation.", img: `${import.meta.env.BASE_URL}scalable_data.jpg` },
+                                { title: "Self-Service BI", desc: "Empower business users with intuitive dashboards and drag-and-drop analytics without IT dependency.", img: `${import.meta.env.BASE_URL}self_service_bi.jpg` },
+                                { title: "Data Governance", desc: "Quality frameworks, lineage tracking, access controls, and compliance to ensure trusted data.", img: `${import.meta.env.BASE_URL}data_governance.jpg` },
                             ].map((item, i) => (
                                 <NeonGlassCard key={i} {...item} index={i} />
                             ))}
@@ -115,7 +115,7 @@ const DataAnalytics = () => {
                 </div>
 
                 <ProvenImpact
-                    backgroundImage="/data_hero.jpg"
+                    backgroundImage={`${import.meta.env.BASE_URL}data_hero.jpg`}
                     stats={[
                         { val: "5x", label: "Faster Insights", sub: "from data collection to decision-making" },
                         { val: "40%", label: "Productivity Boost", sub: "for data science and analyst teams" },

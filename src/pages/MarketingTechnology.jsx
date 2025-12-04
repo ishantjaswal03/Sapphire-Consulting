@@ -61,7 +61,7 @@ const MarketingTechnology = () => {
                     ref={heroRef}
                     className="absolute inset-0 z-0"
                     style={{
-                        backgroundImage: 'url("/marketing_hero.jpg")',
+                        backgroundImage: `url("${import.meta.env.BASE_URL}marketing_hero.jpg")`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                     }}
@@ -101,12 +101,12 @@ const MarketingTechnology = () => {
                         <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Why Marketing Teams Choose Sapphire</h2>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {[
-                                { title: "Customer-Centric Platforms", desc: "We design with marketers, customers, and data analysts in mind, creating seamless omnichannel experiences.", img: "/customer_centric.jpg" },
-                                { title: "Privacy & Compliance", desc: "GDPR, CCPA, and data governance built into every solution to protect customer data and brand reputation.", img: "/privacy_marketing.jpg" },
-                                { title: "Scalable Tech Stack", desc: "Cloud-native, API-first architectures designed to handle high-volume campaigns and real-time personalization.", img: "/scalable_marketing.jpg" },
-                                { title: "Unified Data Ecosystem", desc: "Integrate CRM, CDP, analytics, social media, and advertising platforms for a complete view of the customer.", img: "/unified_data.jpg" },
-                                { title: "AI-Powered Insights", desc: "Leverage machine learning for predictive analytics, customer segmentation, and campaign optimization.", img: "/ai_marketing.jpg" },
-                                { title: "Agile Campaign Management", desc: "Rapid deployment of campaigns with A/B testing, real-time analytics, and automated optimization.", img: "/agile_campaigns.jpg" },
+                                { title: "Customer-Centric Platforms", desc: "We design with marketers, customers, and data analysts in mind, creating seamless omnichannel experiences.", img: `${import.meta.env.BASE_URL}customer_centric.jpg` },
+                                { title: "Privacy & Compliance", desc: "GDPR, CCPA, and data governance built into every solution to protect customer data and brand reputation.", img: `${import.meta.env.BASE_URL}privacy_marketing.jpg` },
+                                { title: "Scalable Tech Stack", desc: "Cloud-native, API-first architectures designed to handle high-volume campaigns and real-time personalization.", img: `${import.meta.env.BASE_URL}scalable_marketing.jpg` },
+                                { title: "Unified Data Ecosystem", desc: "Integrate CRM, CDP, analytics, social media, and advertising platforms for a complete view of the customer.", img: `${import.meta.env.BASE_URL}unified_data.jpg` },
+                                { title: "AI-Powered Insights", desc: "Leverage machine learning for predictive analytics, customer segmentation, and campaign optimization.", img: `${import.meta.env.BASE_URL}ai_marketing.jpg` },
+                                { title: "Agile Campaign Management", desc: "Rapid deployment of campaigns with A/B testing, real-time analytics, and automated optimization.", img: `${import.meta.env.BASE_URL}agile_campaigns.jpg` },
                             ].map((item, i) => (
                                 <NeonGlassCard key={i} {...item} index={i} />
                             ))}
@@ -115,7 +115,7 @@ const MarketingTechnology = () => {
                 </div>
 
                 <ProvenImpact
-                    backgroundImage="/marketing_hero.jpg"
+                    backgroundImage={`${import.meta.env.BASE_URL}marketing_hero.jpg`}
                     stats={[
                         { val: "3x", label: "ROI Improvement", sub: "through personalized campaigns and automation" },
                         { val: "50%", label: "Higher Engagement", sub: "across all digital channels" },
