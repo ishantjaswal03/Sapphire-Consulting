@@ -3,6 +3,7 @@ import CardNav from './CardNav';
 import logo from '../assets/logo.png';
 
 const Navbar = () => {
+    console.log('Navbar Logo Path:', logo);
     const navItems = [
         {
             label: "Services",
