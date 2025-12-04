@@ -77,7 +77,7 @@ const Expertise = () => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-28 justify-items-center">
                     <div className="card card-1" ref={setCardRef(0)}>
-                        <div className="face face1" data-title="Custom Software Development"></div>
+                        <div className="face face1" data-title="Custom Software Development" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}section2_card1.png)` }}></div>
                         <div className="face face2">
                             <div className="content">
                                 <p>
@@ -88,7 +88,7 @@ const Expertise = () => {
                         </div>
                     </div>
                     <div className="card card-2" ref={setCardRef(1)}>
-                        <div className="face face1" data-title="Mobile & Web Applications"></div>
+                        <div className="face face1" data-title="Mobile & Web Applications" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}section2_card2.jpg)` }}></div>
                         <div className="face face2">
                             <div className="content">
                                 <p>
@@ -99,7 +99,7 @@ const Expertise = () => {
                         </div>
                     </div>
                     <div className="card card-3" ref={setCardRef(2)}>
-                        <div className="face face1" data-title="HIPAA & Compliance Solutions"></div>
+                        <div className="face face1" data-title="HIPAA & Compliance Solutions" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}section2_card3.jpg)` }}></div>
                         <div className="face face2">
                             <div className="content">
                                 <p>
@@ -110,7 +110,7 @@ const Expertise = () => {
                         </div>
                     </div>
                     <div className="card card-4" ref={setCardRef(3)}>
-                        <div className="face face1" data-title="MarTech & Analytics"></div>
+                        <div className="face face1" data-title="MarTech & Analytics" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}section2_card4.jpg)` }}></div>
                         <div className="face face2">
                             <div className="content">
                                 <p>
@@ -121,7 +121,7 @@ const Expertise = () => {
                         </div>
                     </div>
                     <div className="card card-5" ref={setCardRef(4)}>
-                        <div className="face face1" data-title="EdTech Solutions"></div>
+                        <div className="face face1" data-title="EdTech Solutions" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}section2_card5.jpg)` }}></div>
                         <div className="face face2">
                             <div className="content">
                                 <p>
@@ -132,7 +132,7 @@ const Expertise = () => {
                         </div>
                     </div>
                     <div className="card card-6" ref={setCardRef(5)}>
-                        <div className="face face1" data-title="Digital Transformation"></div>
+                        <div className="face face1" data-title="Digital Transformation" style={{ backgroundImage: `url(${import.meta.env.BASE_URL}section2_card6.jpg)` }}></div>
                         <div className="face face2">
                             <div className="content">
                                 <p>

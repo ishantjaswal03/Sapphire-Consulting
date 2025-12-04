@@ -18,7 +18,7 @@ const Footer = () => {
                     {/* 1. Brand Section */}
                     <div className="space-y-6">
                         <div className="flex items-center gap-3">
-                            <img src="/logo.png" alt="Sapphire Consulting Logo" className="w-10 h-10 object-contain" />
+                            <img src={`${import.meta.env.BASE_URL}logo.png`} alt="Sapphire Consulting Logo" className="w-10 h-10 object-contain" />
                             <h2 className="text-2xl font-bold text-white">
                                 Sapphire Consulting
                             </h2>

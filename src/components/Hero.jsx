@@ -94,7 +94,7 @@ const Hero = () => {
                 className="absolute top-0 left-0 w-full h-full object-cover z-0 blur-sm transition-opacity duration-1000"
                 id="hero-video"
             >
-                <source src="/Hero_section_background.mp4" type="video/mp4" />
+                <source src={`${import.meta.env.BASE_URL}Hero_section_background.mp4`} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
             <video
@@ -106,7 +106,7 @@ const Hero = () => {
                 className="absolute top-0 left-0 w-full h-full object-cover z-0 blur-sm transition-opacity duration-1000 opacity-0"
                 id="hero-video-reverse"
             >
-                <source src="/Hero_section_background.mp4" type="video/mp4" />
+                <source src={`${import.meta.env.BASE_URL}Hero_section_background.mp4`} type="video/mp4" />
                 Your browser does not support the video tag.
             </video>
             <div id="hero-overlay" className="absolute top-0 left-0 w-full h-full bg-black opacity-60 z-10"></div>

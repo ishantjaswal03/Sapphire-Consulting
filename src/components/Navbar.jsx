@@ -38,7 +38,7 @@ const Navbar = () => {
 
     return (
         <CardNav
-            logo="/logo.png"
+            logo={`${import.meta.env.BASE_URL}logo.png`}
             logoAlt="Sapphire Consulting"
             companyName="Sapphire Consulting"
             items={navItems}

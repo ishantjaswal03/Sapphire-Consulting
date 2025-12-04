@@ -264,7 +264,7 @@ const Partners = () => {
                 <div className="approach-grid">
                     <div className="card" tabIndex="0" ref={setApproachRef(0)}>
                         <img
-                            src="/section3_card1.jpg"
+                            src={`${import.meta.env.BASE_URL}section3_card1.jpg`}
                             alt="A team collaborating at a whiteboard with sticky notes."
                             onError={(e) => {
                                 e.target.onerror = null;
@@ -281,7 +281,7 @@ const Partners = () => {
                     </div>
                     <div className="card" tabIndex="0" ref={setApproachRef(1)}>
                         <img
-                            src="/section3_card2.jpg"
+                            src={`${import.meta.env.BASE_URL}section3_card2.jpg`}
                             alt="Server racks in a data center with blue and purple lighting."
                             onError={(e) => {
                                 e.target.onerror = null;
@@ -298,7 +298,7 @@ const Partners = () => {
                     </div>
                     <div className="card" tabIndex="0" ref={setApproachRef(2)}>
                         <img
-                            src="/section3_card3.jpg"
+                            src={`${import.meta.env.BASE_URL}section3_card3.jpg`}
                             alt="A laptop and tablet displaying various data charts and graphs."
                             onError={(e) => {
                                 e.target.onerror = null;
