@@ -101,12 +101,12 @@ const DataAnalytics = () => {
                         <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Why Data Teams Choose Sapphire</h2>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                             {[
-                                { title: "End-to-End Solutions", desc: "From data ingestion to visualization, we handle the entire analytics pipeline with modern tools and best practices.", img: `${import.meta.env.BASE_URL}end_to_end.jpg` },
-                                { title: "Real-Time Analytics", desc: "Stream processing and real-time dashboards for immediate insights and proactive decision-making.", img: `${import.meta.env.BASE_URL}realtime_analytics.jpg` },
-                                { title: "AI & Machine Learning", desc: "Predictive models, anomaly detection, forecasting, and recommendation engines built into your workflows.", img: `${import.meta.env.BASE_URL}ai_ml.jpg` },
-                                { title: "Scalable Data Platforms", desc: "Cloud-native data lakes and warehouses that grow with your business without performance degradation.", img: `${import.meta.env.BASE_URL}scalable_data.jpg` },
-                                { title: "Self-Service BI", desc: "Empower business users with intuitive dashboards and drag-and-drop analytics without IT dependency.", img: `${import.meta.env.BASE_URL}self_service_bi.jpg` },
-                                { title: "Data Governance", desc: "Quality frameworks, lineage tracking, access controls, and compliance to ensure trusted data.", img: `${import.meta.env.BASE_URL}data_governance.jpg` },
+                                { title: "End-to-End Solutions", desc: "From data ingestion to visualization, we handle the entire analytics pipeline with modern tools and best practices.", img: `${import.meta.env.BASE_URL}end_to_end.png` },
+                                { title: "Real-Time Analytics", desc: "Stream processing and real-time dashboards for immediate insights and proactive decision-making.", img: `${import.meta.env.BASE_URL}realtime_analytics.png` },
+                                { title: "AI & Machine Learning", desc: "Predictive models, anomaly detection, forecasting, and recommendation engines built into your workflows.", img: `${import.meta.env.BASE_URL}ai_ml.png` },
+                                { title: "Scalable Data Platforms", desc: "Cloud-native data lakes and warehouses that grow with your business without performance degradation.", img: `${import.meta.env.BASE_URL}scalable_data.png` },
+                                { title: "Self-Service BI", desc: "Empower business users with intuitive dashboards and drag-and-drop analytics without IT dependency.", img: `${import.meta.env.BASE_URL}self_service_bi.png` },
+                                { title: "Data Governance", desc: "Quality frameworks, lineage tracking, access controls, and compliance to ensure trusted data.", img: `${import.meta.env.BASE_URL}data_governance.png` },
                             ].map((item, i) => (
                                 <NeonGlassCard key={i} {...item} index={i} />
                             ))}

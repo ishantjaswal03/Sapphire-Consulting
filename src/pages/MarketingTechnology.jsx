@@ -105,8 +105,8 @@ const MarketingTechnology = () => {
                                 { title: "Privacy & Compliance", desc: "GDPR, CCPA, and data governance built into every solution to protect customer data and brand reputation.", img: `${import.meta.env.BASE_URL}privacy_marketing.jpg` },
                                 { title: "Scalable Tech Stack", desc: "Cloud-native, API-first architectures designed to handle high-volume campaigns and real-time personalization.", img: `${import.meta.env.BASE_URL}scalable_marketing.jpg` },
                                 { title: "Unified Data Ecosystem", desc: "Integrate CRM, CDP, analytics, social media, and advertising platforms for a complete view of the customer.", img: `${import.meta.env.BASE_URL}unified_data.jpg` },
-                                { title: "AI-Powered Insights", desc: "Leverage machine learning for predictive analytics, customer segmentation, and campaign optimization.", img: `${import.meta.env.BASE_URL}ai_marketing.jpg` },
-                                { title: "Agile Campaign Management", desc: "Rapid deployment of campaigns with A/B testing, real-time analytics, and automated optimization.", img: `${import.meta.env.BASE_URL}agile_campaigns.jpg` },
+                                { title: "AI-Powered Insights", desc: "Leverage machine learning for predictive analytics, customer segmentation, and campaign optimization.", img: `${import.meta.env.BASE_URL}ai_marketing.png` },
+                                { title: "Agile Campaign Management", desc: "Rapid deployment of campaigns with A/B testing, real-time analytics, and automated optimization.", img: `${import.meta.env.BASE_URL}agile_campaigns.png` },
                             ].map((item, i) => (
                                 <NeonGlassCard key={i} {...item} index={i} />
                             ))}

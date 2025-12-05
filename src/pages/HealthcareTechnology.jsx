@@ -106,7 +106,7 @@ const HealthcareTechnology = () => {
                                 { title: "Scalable Foundations", desc: "Cloud-native, API-first architectures ready to support growth and peak loads.", img: `${import.meta.env.BASE_URL}scalable_foundations.png` },
                                 { title: "Interoperable by Design", desc: "We integrate with existing EHR, LIS, RIS, and hospital systems to avoid “rip and replace.”", img: `${import.meta.env.BASE_URL}interoperable_design.png` },
                                 { title: "Experience Across Care Settings", desc: "Hospitals, multi-specialty clinics, diagnostics, telehealth startups, insurers, and digital health platforms.", img: `${import.meta.env.BASE_URL}care_settings.png` },
-                                { title: "Data-Driven Intelligence", desc: "Transforming raw health data into actionable insights for better clinical outcomes and operational efficiency.", img: `${import.meta.env.BASE_URL}scalable_foundations.png` },
+                                { title: "Data-Driven Intelligence", desc: "Transforming raw health data into actionable insights for better clinical outcomes and operational efficiency.", img: `${import.meta.env.BASE_URL}data_driven_intelligence.png` },
                             ].map((item, i) => (
                                 <NeonGlassCard key={i} {...item} index={i} />
                             ))}
