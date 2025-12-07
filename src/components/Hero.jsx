@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import './CardNav.css'; // Import liquid glass styles
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -127,9 +128,32 @@ const Hero = () => {
                     Sapphire Consulting delivers cutting-edge software development, digital transformation, and IT consulting
                     services across healthcare, education, marketing technology, and financial services sectors.
                 </p>
-                <button ref={buttonRef}>
-                    <div>
-                        <span>Start Your Digital Journey</span>
+                <button
+                    ref={buttonRef}
+                    className="liquidGlass-wrapper"
+                    onClick={() => {
+                        const contactSection = document.getElementById('contact');
+                        if (contactSection) {
+                            contactSection.scrollIntoView({ behavior: 'smooth' });
+                        }
+                    }}
+                    style={{
+                        padding: 0, // Reset padding as inner div handles it? Or wrapper?
+                        // We need to match the size effectively.
+                        borderRadius: '8px',
+                        overflow: 'hidden',
+                        display: 'inline-block', // Ensure it doesn't span full width if block
+                        border: 'none', // Reset default border
+                        cursor: 'pointer'
+                    }}
+                >
+                    <div className="liquidGlass-effect"></div>
+                    <div className="liquidGlass-tint"></div>
+                    <div className="liquidGlass-shine"></div>
+                    <div className="liquidGlass-text">
+                        <div style={{ background: 'transparent', padding: '12px 24px' }}>
+                            <span style={{ fontSize: '1.25rem', fontWeight: 600 }}>Start Your Digital Journey</span>
+                        </div>
                     </div>
                 </button>
             </div>

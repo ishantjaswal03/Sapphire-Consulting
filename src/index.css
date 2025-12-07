@@ -89,7 +89,7 @@ body {
     <button>
     elements in the form.
     */
-#hero-content button,
+#hero-content button:not(.liquidGlass-wrapper),
 .contact-section-form button[type="submit"] {
   all: unset;
   background: transparent;
@@ -100,7 +100,7 @@ body {
   outline-offset: -1px;
 }
 
-#hero-content button>div,
+#hero-content button:not(.liquidGlass-wrapper)>div,
 .contact-section-form button[type="submit"]>div {
   display: block;
   padding: 0.8em 1.2em;
@@ -116,14 +116,15 @@ body {
   outline-offset: -1px;
 }
 
-#hero-content button>div:not(:hover),
+#hero-content button:not(.liquidGlass-wrapper)>div:not(:hover),
 .contact-section-form button[type="submit"]>div:not(:hover) {
   transition: --after-blur 0.3s ease;
 }
 
-#hero-content button>div>span,
+#hero-content button:not(.liquidGlass-wrapper)>div>span,
 .contact-section-form button[type="submit"]>div>span {
   background: linear-gradient(to right, var(--color-pale-green), var(--color-green-bright), var(--color-green-medium), var(--color-green-dark), var(--color-green-medium), var(--color-green-bright), var(--color-pale-green)) no-repeat calc(var(--bg-position) * 1%) 0% / 900%;
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   letter-spacing: 0.15ch;
@@ -132,7 +133,7 @@ body {
   outline-offset: -1px;
 }
 
-#hero-content button>div:after,
+#hero-content button:not(.liquidGlass-wrapper)>div:after,
 .contact-section-form button[type="submit"]>div:after {
   display: block;
   position: absolute;
@@ -150,7 +151,7 @@ body {
   outline-offset: -1px;
 }
 
-#hero-content button>div:before,
+#hero-content button:not(.liquidGlass-wrapper)>div:before,
 .contact-section-form button[type="submit"]>div:before {
   content: "";
   display: block;
@@ -167,7 +168,7 @@ body {
   outline-offset: -1px;
 }
 
-#hero-content button:hover,
+#hero-content button:not(.liquidGlass-wrapper):hover,
 .contact-section-form button[type="submit"]:hover {
   --btn-scale: 1.05;
   --bg-position: 0;
@@ -179,7 +180,7 @@ body {
   --btn-offset: 5;
 }
 
-#hero-content button:active,
+#hero-content button:not(.liquidGlass-wrapper):active,
 .contact-section-form button[type="submit"]:active {
   --btn-scale: 0.98;
   --after-blur: 15;

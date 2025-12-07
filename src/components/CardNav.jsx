@@ -79,11 +79,11 @@ const CardNav = ({
 
         tl.to(navEl, {
             height: calculateHeight,
-            duration: 0.4,
+            duration: 0.2,
             ease
         });
 
-        tl.to(cardsRef.current, { y: 0, opacity: 1, duration: 0.4, ease, stagger: 0.08 }, '-=0.1');
+        tl.to(cardsRef.current, { y: 0, opacity: 1, duration: 0.2, ease, stagger: 0.05 }, '-=0.1');
 
         return tl;
     };
@@ -161,67 +161,72 @@ const CardNav = ({
 
     return (
         <div className={`card-nav-container ${className}`}>
-            <nav ref={navRef} className={`card-nav ${isExpanded ? 'open' : ''}`} style={{ backgroundColor: baseColor }}>
-                <div className="card-nav-top">
-                    <div
-                        className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''}`}
-                        onClick={toggleMenu}
-                        role="button"
-                        aria-label={isExpanded ? 'Close menu' : 'Open menu'}
-                        tabIndex={0}
-                        style={{ color: menuColor || '#000' }}
-                    >
-                        <div className="hamburger-line" />
-                        <div className="hamburger-line" />
+            <nav ref={navRef} className={`card-nav liquidGlass-wrapper ${isExpanded ? 'open' : ''}`} style={{ backgroundColor: baseColor }}>
+                <div className="liquidGlass-effect"></div>
+                <div className="liquidGlass-tint"></div>
+                <div className="liquidGlass-shine"></div>
+                <div className="liquidGlass-text">
+                    <div className="card-nav-top">
+                        <div
+                            className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''}`}
+                            onClick={toggleMenu}
+                            role="button"
+                            aria-label={isExpanded ? 'Close menu' : 'Open menu'}
+                            tabIndex={0}
+                            style={{ color: menuColor || '#000' }}
+                        >
+                            <div className="hamburger-line" />
+                            <div className="hamburger-line" />
+                        </div>
+
+                        <Link to="/" className="logo-container">
+                            <img src={logo} alt={logoAlt} className="logo" />
+                            {companyName && <span className="company-name">{companyName}</span>}
+                        </Link>
+
+                        <a
+                            href="#contact"
+                            className="card-nav-cta-button"
+                            style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+                            onClick={(e) => handleLinkClick(e, '#contact')}
+                        >
+                            Contact Us
+                        </a>
                     </div>
 
-                    <Link to="/" className="logo-container">
-                        <img src={logo} alt={logoAlt} className="logo" />
-                        {companyName && <span className="company-name">{companyName}</span>}
-                    </Link>
-
-                    <a
-                        href="#contact"
-                        className="card-nav-cta-button"
-                        style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
-                        onClick={(e) => handleLinkClick(e, '#contact')}
-                    >
-                        Contact Us
-                    </a>
-                </div>
-
-                <div className="card-nav-content" aria-hidden={!isExpanded}>
-                    {(items || []).slice(0, 3).map((item, idx) => (
-                        <div
-                            key={`${item.label}-${idx}`}
-                            className="nav-card"
-                            ref={setCardRef(idx)}
-                            style={{ backgroundColor: item.bgColor, color: item.textColor }}
-                        >
-                            <div className="nav-card-label">{item.label}</div>
-                            <div className="nav-card-links">
-                                {item.links?.map((lnk, i) => (
-                                    lnk.href.startsWith('/') && !lnk.href.startsWith('//') ? (
-                                        <Link key={`${lnk.label}-${i}`} className={`nav-card-link ${lnk.mobileOnly ? 'mobile-only-link' : ''}`} to={lnk.href} aria-label={lnk.ariaLabel}>
-                                            <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
-                                            {lnk.label}
-                                        </Link>
-                                    ) : (
-                                        <a
-                                            key={`${lnk.label}-${i}`}
-                                            className={`nav-card-link ${lnk.mobileOnly ? 'mobile-only-link' : ''}`}
-                                            href={lnk.href}
-                                            aria-label={lnk.ariaLabel}
-                                            onClick={(e) => handleLinkClick(e, lnk.href)}
-                                        >
-                                            <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
-                                            {lnk.label}
-                                        </a>
-                                    )
-                                ))}
+                    <div className="card-nav-content" aria-hidden={!isExpanded}>
+                        {(items || []).slice(0, 3).map((item, idx) => (
+                            <div
+                                key={`${item.label}-${idx}`}
+                                className="nav-card"
+                                ref={setCardRef(idx)}
+                                style={{ backgroundColor: item.bgColor, color: item.textColor }}
+                            >
+                                <div className="nav-card-label">{item.label}</div>
+                                <div className="nav-card-links">
+                                    {item.links?.map((lnk, i) => (
+                                        lnk.href.startsWith('/') && !lnk.href.startsWith('//') ? (
+                                            <Link key={`${lnk.label}-${i}`} className={`nav-card-link ${lnk.mobileOnly ? 'mobile-only-link' : ''}`} to={lnk.href} aria-label={lnk.ariaLabel}>
+                                                <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
+                                                {lnk.label}
+                                            </Link>
+                                        ) : (
+                                            <a
+                                                key={`${lnk.label}-${i}`}
+                                                className={`nav-card-link ${lnk.mobileOnly ? 'mobile-only-link' : ''}`}
+                                                href={lnk.href}
+                                                aria-label={lnk.ariaLabel}
+                                                onClick={(e) => handleLinkClick(e, lnk.href)}
+                                            >
+                                                <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
+                                                {lnk.label}
+                                            </a>
+                                        )
+                                    ))}
+                                </div>
                             </div>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </nav>
         </div>
