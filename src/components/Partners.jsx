@@ -245,13 +245,7 @@ const Partners = () => {
                                                 {item.title}
                                             </h3>
 
-                                            {/* Active Indicator */}
-                                            <span className={`
-                                                hidden lg:block text-2xl transition-all duration-300 opacity-0 -translate-x-4
-                                                ${activeIndex === index ? 'opacity-100 translate-x-0 text-[#61FFB1]' : ''}
-                                            `}>
-                                                →
-                                            </span>
+                                            {/* Active Indicator Removed */}
                                         </button>
 
                                         {/* Description & Link - Expandable */}

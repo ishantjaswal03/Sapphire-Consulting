@@ -11,6 +11,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
+  "homepage": "https://ishantjaswal03.github.io/stc",
   "dependencies": {
     "@developer-hub/liquid-glass": "^1.2.3",
     "@emotion/react": "^11.14.0",
