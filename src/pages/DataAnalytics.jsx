@@ -9,6 +9,7 @@ import NeonGlassCard from '../components/NeonGlassCard';
 import ProvenImpact from '../components/ProvenImpact';
 import PrincipleCards from '../components/PrincipleCards';
 import ClientCards from '../components/ClientCards';
+import ChromaGrid from '../components/ChromaGrid';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -99,21 +100,63 @@ const DataAnalytics = () => {
                     </div>
                 </div>
 
+
+
                 {/* Why Choose Sapphire */}
                 <div className="py-24 bg-white/5 border-y border-white/5" ref={addToRefs}>
                     <div className="container mx-auto px-6">
                         <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Why Data Teams Choose Sapphire</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {[
-                                { title: "End-to-End Solutions", desc: "From data ingestion to visualization, we handle the entire analytics pipeline with modern tools and best practices.", img: `${import.meta.env.BASE_URL}end_to_end.png` },
-                                { title: "Real-Time Analytics", desc: "Stream processing and real-time dashboards for immediate insights and proactive decision-making.", img: `${import.meta.env.BASE_URL}realtime_analytics.png` },
-                                { title: "AI & Machine Learning", desc: "Predictive models, anomaly detection, forecasting, and recommendation engines built into your workflows.", img: `${import.meta.env.BASE_URL}ai_ml.png` },
-                                { title: "Scalable Data Platforms", desc: "Cloud-native data lakes and warehouses that grow with your business without performance degradation.", img: `${import.meta.env.BASE_URL}scalable_data.png` },
-                                { title: "Self-Service BI", desc: "Empower business users with intuitive dashboards and drag-and-drop analytics without IT dependency.", img: `${import.meta.env.BASE_URL}self_service_bi.png` },
-                                { title: "Data Governance", desc: "Quality frameworks, lineage tracking, access controls, and compliance to ensure trusted data.", img: `${import.meta.env.BASE_URL}data_governance.png` },
-                            ].map((item, i) => (
-                                <NeonGlassCard key={i} {...item} index={i} />
-                            ))}
+                        <div style={{ position: 'relative' }}>
+                            <ChromaGrid
+                                items={[
+                                    {
+                                        title: "End-to-End Solutions",
+                                        subtitle: "From data ingestion to visualization, we handle the entire analytics pipeline with modern tools.",
+                                        image: `${import.meta.env.BASE_URL}end_to_end.png`,
+                                        borderColor: "#3B82F6",
+                                        gradient: "linear-gradient(145deg, #3B82F6, #000)"
+                                    },
+                                    {
+                                        title: "Real-Time Analytics",
+                                        subtitle: "Stream processing and real-time dashboards for immediate insights and proactive decision-making.",
+                                        image: `${import.meta.env.BASE_URL}realtime_analytics.png`,
+                                        borderColor: "#10B981",
+                                        gradient: "linear-gradient(180deg, #10B981, #000)"
+                                    },
+                                    {
+                                        title: "AI & Machine Learning",
+                                        subtitle: "Predictive models, anomaly detection, forecasting, and recommendation engines built into your workflows.",
+                                        image: `${import.meta.env.BASE_URL}ai_ml.png`,
+                                        borderColor: "#F59E0B",
+                                        gradient: "linear-gradient(165deg, #F59E0B, #000)"
+                                    },
+                                    {
+                                        title: "Scalable Platforms",
+                                        subtitle: "Cloud-native data lakes and warehouses that grow with your business without performance degradation.",
+                                        image: `${import.meta.env.BASE_URL}scalable_data.png`,
+                                        borderColor: "#EF4444",
+                                        gradient: "linear-gradient(195deg, #EF4444, #000)"
+                                    },
+                                    {
+                                        title: "Self-Service BI",
+                                        subtitle: "Empower business users with intuitive dashboards and drag-and-drop analytics without IT dependency.",
+                                        image: `${import.meta.env.BASE_URL}self_service_bi.png`,
+                                        borderColor: "#8B5CF6",
+                                        gradient: "linear-gradient(225deg, #8B5CF6, #000)"
+                                    },
+                                    {
+                                        title: "Data Governance",
+                                        subtitle: "Quality frameworks, lineage tracking, access controls, and compliance to ensure trusted data.",
+                                        image: `${import.meta.env.BASE_URL}data_governance.png`,
+                                        borderColor: "#06B6D4",
+                                        gradient: "linear-gradient(135deg, #06B6D4, #000)"
+                                    },
+                                ]}
+                                radius={300}
+                                damping={0.45}
+                                fadeOut={0.6}
+                                ease="power3.out"
+                            />
                         </div>
                     </div>
                 </div>

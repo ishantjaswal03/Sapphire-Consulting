@@ -9,6 +9,7 @@ import NeonGlassCard from '../components/NeonGlassCard';
 import ProvenImpact from '../components/ProvenImpact';
 import PrincipleCards from '../components/PrincipleCards';
 import ClientCards from '../components/ClientCards';
+import ChromaGrid from '../components/ChromaGrid';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -99,21 +100,63 @@ const CloudArchitecture = () => {
                     </div>
                 </div>
 
+
+
                 {/* Why Choose Sapphire */}
                 <div className="py-24 bg-white/5 border-y border-white/5" ref={addToRefs}>
                     <div className="container mx-auto px-6">
                         <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Why Enterprises Choose Sapphire</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {[
-                                { title: "Multi-Cloud Expertise", desc: "Deep experience across AWS, Azure, and Google Cloud to design the best solution for your needs.", img: `${import.meta.env.BASE_URL}multi_cloud.png` },
-                                { title: "Security-First Design", desc: "Zero-trust architectures, encryption, compliance frameworks, and continuous security monitoring.", img: `${import.meta.env.BASE_URL}security_cloud.png` },
-                                { title: "Cost Optimization", desc: "Right-sizing, reserved instances, spot instances, and automated cost monitoring to maximize ROI.", img: `${import.meta.env.BASE_URL}cost_optimization.png` },
-                                { title: "DevOps Integration", desc: "CI/CD pipelines, infrastructure as code, and automated deployments for rapid iteration.", img: `${import.meta.env.BASE_URL}devops_integration.png` },
-                                { title: "High Availability & DR", desc: "Fault-tolerant designs with disaster recovery and business continuity planning built-in.", img: `${import.meta.env.BASE_URL}high_availability.png` },
-                                { title: "Observability & Monitoring", desc: "Comprehensive logging, metrics, tracing, and alerting for proactive issue resolution.", img: `${import.meta.env.BASE_URL}observability.png` },
-                            ].map((item, i) => (
-                                <NeonGlassCard key={i} {...item} index={i} />
-                            ))}
+                        <div style={{ position: 'relative' }}>
+                            <ChromaGrid
+                                items={[
+                                    {
+                                        title: "Multi-Cloud Expertise",
+                                        subtitle: "Deep experience across AWS, Azure, and Google Cloud to design the best solution for your needs.",
+                                        image: `${import.meta.env.BASE_URL}multi_cloud.png`,
+                                        borderColor: "#3B82F6",
+                                        gradient: "linear-gradient(145deg, #3B82F6, #000)"
+                                    },
+                                    {
+                                        title: "Security-First Design",
+                                        subtitle: "Zero-trust architectures, encryption, compliance frameworks, and continuous security monitoring.",
+                                        image: `${import.meta.env.BASE_URL}security_cloud.png`,
+                                        borderColor: "#10B981",
+                                        gradient: "linear-gradient(180deg, #10B981, #000)"
+                                    },
+                                    {
+                                        title: "Cost Optimization",
+                                        subtitle: "Right-sizing, reserved instances, and automated cost monitoring to maximize ROI.",
+                                        image: `${import.meta.env.BASE_URL}cost_optimization.png`,
+                                        borderColor: "#F59E0B",
+                                        gradient: "linear-gradient(165deg, #F59E0B, #000)"
+                                    },
+                                    {
+                                        title: "DevOps Integration",
+                                        subtitle: "CI/CD pipelines, infrastructure as code, and automated deployments for rapid iteration.",
+                                        image: `${import.meta.env.BASE_URL}devops_integration.png`,
+                                        borderColor: "#EF4444",
+                                        gradient: "linear-gradient(195deg, #EF4444, #000)"
+                                    },
+                                    {
+                                        title: "High Availability & DR",
+                                        subtitle: "Fault-tolerant designs with disaster recovery and business continuity planning built-in.",
+                                        image: `${import.meta.env.BASE_URL}high_availability.png`,
+                                        borderColor: "#8B5CF6",
+                                        gradient: "linear-gradient(225deg, #8B5CF6, #000)"
+                                    },
+                                    {
+                                        title: "Observability",
+                                        subtitle: "Comprehensive logging, metrics, tracing, and alerting for proactive issue resolution.",
+                                        image: `${import.meta.env.BASE_URL}observability.png`,
+                                        borderColor: "#06B6D4",
+                                        gradient: "linear-gradient(135deg, #06B6D4, #000)"
+                                    },
+                                ]}
+                                radius={300}
+                                damping={0.45}
+                                fadeOut={0.6}
+                                ease="power3.out"
+                            />
                         </div>
                     </div>
                 </div>

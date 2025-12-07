@@ -9,6 +9,7 @@ import NeonGlassCard from '../components/NeonGlassCard';
 import ProvenImpact from '../components/ProvenImpact';
 import PrincipleCards from '../components/PrincipleCards';
 import ClientCards from '../components/ClientCards';
+import ChromaGrid from '../components/ChromaGrid';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -99,21 +100,63 @@ const HealthcareTechnology = () => {
                     </div>
                 </div>
 
+
+
                 {/* Why Choose Sapphire */}
                 <div className="py-24 bg-white/5 border-y border-white/5" ref={addToRefs}>
                     <div className="container mx-auto px-6">
                         <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Why Healthcare Teams Choose Sapphire</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {[
-                                { title: "Built for Clinical Reality", desc: "We design with doctors, nurses, admin staff, and patients in mind, not just the tech stack.", img: `${import.meta.env.BASE_URL}clinical_reality.png` },
-                                { title: "Security First", desc: "Every solution is architected with data protection, privacy, and compliance at the core.", img: `${import.meta.env.BASE_URL}security_first.png` },
-                                { title: "Scalable Foundations", desc: "Cloud-native, API-first architectures ready to support growth and peak loads.", img: `${import.meta.env.BASE_URL}scalable_foundations.png` },
-                                { title: "Interoperable by Design", desc: "We integrate with existing EHR, LIS, RIS, and hospital systems to avoid “rip and replace.”", img: `${import.meta.env.BASE_URL}interoperable_design.png` },
-                                { title: "Experience Across Care Settings", desc: "Hospitals, multi-specialty clinics, diagnostics, telehealth startups, insurers, and digital health platforms.", img: `${import.meta.env.BASE_URL}care_settings.png` },
-                                { title: "Data-Driven Intelligence", desc: "Transforming raw health data into actionable insights for better clinical outcomes and operational efficiency.", img: `${import.meta.env.BASE_URL}data_driven_intelligence.png` },
-                            ].map((item, i) => (
-                                <NeonGlassCard key={i} {...item} index={i} />
-                            ))}
+                        <div style={{ position: 'relative' }}>
+                            <ChromaGrid
+                                items={[
+                                    {
+                                        title: "Built for Clinical Reality",
+                                        subtitle: "We design with doctors, nurses, admin staff, and patients in mind, not just the tech stack.",
+                                        image: `${import.meta.env.BASE_URL}clinical_reality.png`,
+                                        borderColor: "#3B82F6",
+                                        gradient: "linear-gradient(145deg, #3B82F6, #000)"
+                                    },
+                                    {
+                                        title: "Security First",
+                                        subtitle: "Every solution is architected with data protection, privacy, and compliance at the core.",
+                                        image: `${import.meta.env.BASE_URL}security_first.png`,
+                                        borderColor: "#10B981",
+                                        gradient: "linear-gradient(180deg, #10B981, #000)"
+                                    },
+                                    {
+                                        title: "Scalable Foundations",
+                                        subtitle: "Cloud-native, API-first architectures ready to support growth and peak loads.",
+                                        image: `${import.meta.env.BASE_URL}scalable_foundations.png`,
+                                        borderColor: "#F59E0B",
+                                        gradient: "linear-gradient(165deg, #F59E0B, #000)"
+                                    },
+                                    {
+                                        title: "Interoperable by Design",
+                                        subtitle: "We integrate with existing EHR, LIS, RIS, and hospital systems to avoid “rip and replace.”",
+                                        image: `${import.meta.env.BASE_URL}interoperable_design.png`,
+                                        borderColor: "#EF4444",
+                                        gradient: "linear-gradient(195deg, #EF4444, #000)"
+                                    },
+                                    {
+                                        title: "Experience Across Care",
+                                        subtitle: "Hospitals, multi-specialty clinics, diagnostics, telehealth startups, insurers, and digital platforms.",
+                                        image: `${import.meta.env.BASE_URL}care_settings.png`,
+                                        borderColor: "#8B5CF6",
+                                        gradient: "linear-gradient(225deg, #8B5CF6, #000)"
+                                    },
+                                    {
+                                        title: "Data-Driven Intelligence",
+                                        subtitle: "Transforming raw health data into actionable insights for better clinical outcomes.",
+                                        image: `${import.meta.env.BASE_URL}data_driven_intelligence.png`,
+                                        borderColor: "#06B6D4",
+                                        gradient: "linear-gradient(135deg, #06B6D4, #000)"
+                                    },
+                                ]}
+                                radius={300}
+                                damping={0.45}
+                                fadeOut={0.6}
+                                ease="power3.out"
+                            />
                         </div>
                     </div>
                 </div>

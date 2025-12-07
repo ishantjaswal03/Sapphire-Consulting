@@ -9,6 +9,7 @@ import NeonGlassCard from '../components/NeonGlassCard';
 import ProvenImpact from '../components/ProvenImpact';
 import PrincipleCards from '../components/PrincipleCards';
 import ClientCards from '../components/ClientCards';
+import ChromaGrid from '../components/ChromaGrid';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -99,21 +100,63 @@ const EducationalPlatforms = () => {
                     </div>
                 </div>
 
+
+
                 {/* Why Choose Sapphire */}
                 <div className="py-24 bg-white/5 border-y border-white/5" ref={addToRefs}>
                     <div className="container mx-auto px-6">
                         <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Why Educational Institutions Choose Sapphire</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            {[
-                                { title: "Student-Centric Design", desc: "We design with students, teachers, and administrators in mind, creating engaging and intuitive learning experiences.", img: `${import.meta.env.BASE_URL}student_centric.png` },
-                                { title: "Scalable Infrastructure", desc: "Cloud-native architectures that support growth from classrooms to global online universities.", img: `${import.meta.env.BASE_URL}scalable_infra_edu.png` },
-                                { title: "Seamless Integration", desc: "Connect with existing SIS, LMS, and third-party tools to create a unified educational ecosystem.", img: `${import.meta.env.BASE_URL}integration_edu.png` },
-                                { title: "Engagement & Analytics", desc: "Real-time insights into student performance, engagement metrics, and predictive analytics for intervention.", img: `${import.meta.env.BASE_URL}analytics_edu.png` },
-                                { title: "Accessibility First", desc: "WCAG-compliant platforms ensuring every student has equal access to educational resources.", img: `${import.meta.env.BASE_URL}accessibility_edu.png` },
-                                { title: "Gamification & Interactive Learning", desc: "Incorporating game mechanics, simulations, and interactive content to boost engagement and retention.", img: `${import.meta.env.BASE_URL}gamification_edu.png` },
-                            ].map((item, i) => (
-                                <NeonGlassCard key={i} {...item} index={i} />
-                            ))}
+                        <div style={{ position: 'relative' }}>
+                            <ChromaGrid
+                                items={[
+                                    {
+                                        title: "Student-Centric Design",
+                                        subtitle: "We design with students, teachers, and administrators in mind, creating engaging and intuitive learning experiences.",
+                                        image: `${import.meta.env.BASE_URL}student_centric.png`,
+                                        borderColor: "#3B82F6",
+                                        gradient: "linear-gradient(145deg, #3B82F6, #000)"
+                                    },
+                                    {
+                                        title: "Scalable Infrastructure",
+                                        subtitle: "Cloud-native architectures that support growth from classrooms to global online universities.",
+                                        image: `${import.meta.env.BASE_URL}scalable_infra_edu.png`,
+                                        borderColor: "#10B981",
+                                        gradient: "linear-gradient(180deg, #10B981, #000)"
+                                    },
+                                    {
+                                        title: "Seamless Integration",
+                                        subtitle: "Connect with existing SIS, LMS, and third-party tools to create a unified educational ecosystem.",
+                                        image: `${import.meta.env.BASE_URL}integration_edu.png`,
+                                        borderColor: "#F59E0B",
+                                        gradient: "linear-gradient(165deg, #F59E0B, #000)"
+                                    },
+                                    {
+                                        title: "Engagement & Analytics",
+                                        subtitle: "Real-time insights into student performance, engagement metrics, and predictive analytics for intervention.",
+                                        image: `${import.meta.env.BASE_URL}analytics_edu.png`,
+                                        borderColor: "#EF4444",
+                                        gradient: "linear-gradient(195deg, #EF4444, #000)"
+                                    },
+                                    {
+                                        title: "Accessibility First",
+                                        subtitle: "WCAG-compliant platforms ensuring every student has equal access to educational resources.",
+                                        image: `${import.meta.env.BASE_URL}accessibility_edu.png`,
+                                        borderColor: "#8B5CF6",
+                                        gradient: "linear-gradient(225deg, #8B5CF6, #000)"
+                                    },
+                                    {
+                                        title: "Gamification Learning",
+                                        subtitle: "Incorporating game mechanics, simulations, and interactive content to boost engagement and retention.",
+                                        image: `${import.meta.env.BASE_URL}gamification_edu.png`,
+                                        borderColor: "#06B6D4",
+                                        gradient: "linear-gradient(135deg, #06B6D4, #000)"
+                                    },
+                                ]}
+                                radius={300}
+                                damping={0.45}
+                                fadeOut={0.6}
+                                ease="power3.out"
+                            />
                         </div>
                     </div>
                 </div>
