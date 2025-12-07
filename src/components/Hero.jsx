@@ -84,7 +84,14 @@ const Hero = () => {
     }, []);
 
     return (
-        <section className="relative text-white min-h-screen overflow-hidden flex items-center bg-black" id="hero">
+        <section
+            className="relative text-white min-h-screen overflow-hidden flex items-center bg-black"
+            id="hero"
+            style={{
+                maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)'
+            }}
+        >
             <video
                 autoPlay
                 loop

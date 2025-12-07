@@ -104,7 +104,7 @@ const Partners = () => {
     };
 
     return (
-        <section className="bg-black text-white py-24 partners-section" id="approach" ref={sectionRef}>
+        <section className="bg-transparent text-white py-24 partners-section" id="approach" ref={sectionRef}>
             <div className="container mx-auto px-4 relative z-20">
                 <div className="text-center mb-24" ref={titleRef}>
                     <h2 className="title-with-lines mb-4">Innovative Technology Partners</h2>
@@ -264,7 +264,7 @@ const Partners = () => {
                 <div className="approach-grid">
                     <div className="card" tabIndex="0" ref={setApproachRef(0)}>
                         <img
-                            src={`${import.meta.env.BASE_URL}section3_card1.jpg`}
+                            src={`${import.meta.env.BASE_URL}innovation_agile.png`}
                             alt="A team collaborating at a whiteboard with sticky notes."
                             onError={(e) => {
                                 e.target.onerror = null;
@@ -281,7 +281,7 @@ const Partners = () => {
                     </div>
                     <div className="card" tabIndex="0" ref={setApproachRef(1)}>
                         <img
-                            src={`${import.meta.env.BASE_URL}section3_card2.jpg`}
+                            src={`${import.meta.env.BASE_URL}innovation_infra.png`}
                             alt="Server racks in a data center with blue and purple lighting."
                             onError={(e) => {
                                 e.target.onerror = null;
@@ -298,7 +298,7 @@ const Partners = () => {
                     </div>
                     <div className="card" tabIndex="0" ref={setApproachRef(2)}>
                         <img
-                            src={`${import.meta.env.BASE_URL}section3_card3.jpg`}
+                            src={`${import.meta.env.BASE_URL}innovation_insights.png`}
                             alt="A laptop and tablet displaying various data charts and graphs."
                             onError={(e) => {
                                 e.target.onerror = null;

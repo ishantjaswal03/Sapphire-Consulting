@@ -123,7 +123,7 @@ const CaseStudies = () => {
 
     return (
         <>
-            <section className="py-16 bg-black text-white" id="case-studies">
+            <section className="py-16 bg-transparent text-white" id="case-studies">
                 <div className="container mx-auto px-4">
                     <div className="text-center mb-16" ref={titleRef}>
                         <h2 className="title-with-lines mb-4">Industry Case Studies</h2>

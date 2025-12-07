@@ -7,6 +7,8 @@ import Contact from '../components/Contact';
 import ElectricBorder from '../components/ElectricBorder';
 import NeonGlassCard from '../components/NeonGlassCard';
 import ProvenImpact from '../components/ProvenImpact';
+import PrincipleCards from '../components/PrincipleCards';
+import ClientCards from '../components/ClientCards';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,7 +54,7 @@ const HealthcareTechnology = () => {
     };
 
     return (
-        <div className="bg-black min-h-screen text-white font-sans selection:bg-[#61FFB1] selection:text-black">
+        <div className="bg-transparent min-h-screen text-white font-sans selection:bg-[#61FFB1] selection:text-black">
             <Navbar />
 
             {/* Hero Section - Half Height */}
@@ -64,6 +66,8 @@ const HealthcareTechnology = () => {
                         backgroundImage: `url("${import.meta.env.BASE_URL}healthcare_hero.png")`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center 30%', // Adjusted for better focus
+                        maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
+                        WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)'
                     }}
                 >
                     <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
@@ -204,41 +208,23 @@ const HealthcareTechnology = () => {
                 </div>
 
                 {/* Who We Work With */}
-                <div className="py-24 bg-white/5 border-y border-white/5" ref={addToRefs}>
-                    <div className="container mx-auto px-6 text-center">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-12">Who We Work With</h2>
-                        <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-                            {[
-                                "Multi-specialty hospitals", "Outpatient clinics", "Diagnostic labs",
-                                "Telehealth startups", "Health insurance & TPAs", "Wellness programs"
-                            ].map((client, i) => (
-                                <span key={i} className="px-6 py-3 rounded-full bg-black border border-white/10 text-gray-300 text-sm md:text-base hover:border-[#61FFB1] hover:text-white transition-colors cursor-default">
-                                    {client}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                <ClientCards
+                    clients={[
+                        "Multi-specialty hospitals", "Outpatient clinics", "Diagnostic labs",
+                        "Telehealth startups", "Health insurance & TPAs", "Wellness programs"
+                    ]}
+                />
 
-                {/* Engagement Approach */}
-                <div className="py-24 container mx-auto px-6" ref={addToRefs}>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Our Engagement Approach</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-                        {[
-                            { step: "01", title: "Discovery", desc: "Compliance & Workflow Mapping" },
-                            { step: "02", title: "Design", desc: "User Journeys & Architecture" },
-                            { step: "03", title: "Build", desc: "Agile Dev & Integration" },
-                            { step: "04", title: "Deploy", desc: "Rollout & Training" },
-                            { step: "05", title: "Optimize", desc: "Monitor & Enhance" },
-                        ].map((phase, i) => (
-                            <div key={i} className="text-center group">
-                                <div className="text-6xl font-bold text-white/5 mb-4 group-hover:text-[#61FFB1]/20 transition-colors">{phase.step}</div>
-                                <h3 className="text-lg font-bold text-white mb-2">{phase.title}</h3>
-                                <p className="text-xs text-gray-500 uppercase tracking-wider">{phase.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                {/* Engagement Principles */}
+                <PrincipleCards
+                    title="Our Healthcare Engagement Approach"
+                    principles={[
+                        { title: "Clinical Workflow First", desc: "We design solutions that fit naturally into the daily lives of doctors and nurses, minimizing friction and maximizing care time." },
+                        { title: "Security & Compliance", desc: "HIPAA and GDPR compliance are baked in from day one, ensuring patient data is protected by the highest standards." },
+                        { title: "Interoperability", desc: "We break down silos by building systems that speak the same language as your existing EHRs, creating a unified view of the patient." },
+                        { title: "Patient-Centricity", desc: "Everything we build is ultimately designed to improve the patient experience, from easier booking to better health outcomes." }
+                    ]}
+                />
 
                 <Contact />
                 <Footer />

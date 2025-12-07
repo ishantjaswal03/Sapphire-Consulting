@@ -9,7 +9,13 @@ html {
 /* Applying Inter font as the default sans-serif font */
 body {
   font-family: "Inter", sans-serif;
-  /* Default font */
+  background-color: #000;
+  background-image: url('/background.image.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  color: white;
 }
 
 /* --- NEW ANIMATED BUTTON STYLES --- */
@@ -742,24 +748,24 @@ ul.desktop-nav li ul li a::after {
   top: 50%;
 }
 
-.approach-grid .card:hover,
+.approach-grid:hover .card,
 .approach-grid .card:focus,
 .approach-grid .card.mobile-hover {
   box-shadow: rgba(0, 0, 0, 0.5) 0 5vw 6vw -9vw, var(--highlight) 0 5.5vw 5vw -7.5vw, rgba(50, 50, 80, 0.5) 0px 4vw 8vw -2vw, rgba(0, 0, 0, 0.8) 0px 4vw 5vw -3vw;
 }
 
-.approach-grid .card:hover::before,
+.approach-grid:hover .card::before,
 .approach-grid .card:focus::before,
-.approach-grid .card:hover::after,
+.approach-grid:hover .card::after,
 .approach-grid .card:focus::after,
 .approach-grid .card.mobile-hover::before,
 .approach-grid .card.mobile-hover::after {
   transform: scaleX(1);
 }
 
-.approach-grid .card:hover h2 .char,
+.approach-grid:hover .card h2 .char,
 .approach-grid .card:focus h2 .char,
-.approach-grid .card:hover p .word,
+.approach-grid:hover .card p .word,
 .approach-grid .card:focus p .word,
 .approach-grid .card.mobile-hover h2 .char,
 .approach-grid .card.mobile-hover p .word {
@@ -768,19 +774,19 @@ ul.desktop-nav li ul li a::after {
   color: inherit;
 }
 
-.approach-grid .card:hover h2 .char,
+.approach-grid:hover .card h2 .char,
 .approach-grid .card:focus h2 .char,
 .approach-grid .card.mobile-hover h2 .char {
   transition-delay: calc(0.1s + var(--char-index) * var(--title-stagger));
 }
 
-.approach-grid .card:hover p .word,
+.approach-grid:hover .card p .word,
 .approach-grid .card:focus p .word,
 .approach-grid .card.mobile-hover p .word {
   transition-delay: calc(0.1s + var(--word-index) * var(--text-stagger));
 }
 
-.approach-grid .card:hover img,
+.approach-grid:hover .card img,
 .approach-grid .card:focus img,
 .approach-grid .card.mobile-hover img {
   transform: scale(1.1);
@@ -1284,3 +1290,35 @@ ul.desktop-nav li ul li a::after {
 }
 
 /* --- END NEW INDUSTRIES SECTION STYLES --- */
+/* --- BLOB ANIMATION FOR EXPERTISE CARD --- */
+@layer utilities {
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}

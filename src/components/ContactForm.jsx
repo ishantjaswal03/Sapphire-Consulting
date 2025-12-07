@@ -86,7 +86,7 @@ const ContactForm = () => {
                 </div>
             </div>
 
-            <div className="bg-gray-950 border border-gray-800 rounded-2xl p-8 md:p-10 shadow-xl contact-section-form">
+            <div className="bg-black/40 backdrop-blur-md border border-white/10 rounded-2xl p-8 md:p-10 shadow-xl contact-section-form">
                 <form id="contact-form" className="space-y-6" onSubmit={handleSubmit}>
                     <input type="hidden" name="cf-submitted" value="1" />
 
@@ -99,7 +99,7 @@ const ContactForm = () => {
                             name="cf-name"
                             type="text"
                             required
-                            className="w-full rounded-md bg-gray-950 border border-gray-800 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400"
+                            className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400"
                         />
                     </div>
 
@@ -112,7 +112,7 @@ const ContactForm = () => {
                             name="cf-email"
                             type="email"
                             required
-                            className="w-full rounded-md bg-gray-950 border border-gray-800 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400"
+                            className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400"
                         />
                     </div>
 
@@ -124,7 +124,7 @@ const ContactForm = () => {
                             id="company"
                             name="cf-company"
                             type="text"
-                            className="w-full rounded-md bg-gray-950 border border-gray-800 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400"
+                            className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400"
                         />
                     </div>
 
@@ -135,16 +135,16 @@ const ContactForm = () => {
                         <select
                             id="industry"
                             name="cf-industry"
-                            className="w-full rounded-md bg-gray-950 border border-gray-800 px-4 py-3 text-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400"
+                            className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-gray-100 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400"
                         >
-                            <option value="">Select your industry</option>
-                            <option>Healthcare</option>
-                            <option>Education</option>
-                            <option>Marketing / MarTech</option>
-                            <option>Financial Services / FinTech</option>
-                            <option>E-Commerce</option>
-                            <option>Cloud / DevOps</option>
-                            <option>Other</option>
+                            <option value="" className="bg-gray-950 text-gray-100">Select your industry</option>
+                            <option className="bg-gray-950 text-gray-100">Healthcare</option>
+                            <option className="bg-gray-950 text-gray-100">Education</option>
+                            <option className="bg-gray-950 text-gray-100">Marketing / MarTech</option>
+                            <option className="bg-gray-950 text-gray-100">Financial Services / FinTech</option>
+                            <option className="bg-gray-950 text-gray-100">E-Commerce</option>
+                            <option className="bg-gray-950 text-gray-100">Cloud / DevOps</option>
+                            <option className="bg-gray-950 text-gray-100">Other</option>
                         </select>
                     </div>
 
@@ -157,7 +157,7 @@ const ContactForm = () => {
                             name="cf-message"
                             rows="6"
                             required
-                            className="w-full rounded-md bg-gray-950 border border-gray-800 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400"
+                            className="w-full rounded-md bg-white/5 border border-white/10 px-4 py-3 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/50 focus:border-emerald-400"
                             placeholder="Please describe your project requirements, timeline, and any specific technical needs..."
                         ></textarea>
                     </div>

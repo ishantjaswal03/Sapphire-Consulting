@@ -7,6 +7,8 @@ import Contact from '../components/Contact';
 import ElectricBorder from '../components/ElectricBorder';
 import NeonGlassCard from '../components/NeonGlassCard';
 import ProvenImpact from '../components/ProvenImpact';
+import PrincipleCards from '../components/PrincipleCards';
+import ClientCards from '../components/ClientCards';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -52,7 +54,7 @@ const CloudArchitecture = () => {
     };
 
     return (
-        <div className="bg-black min-h-screen text-white font-sans selection:bg-[#61FFB1] selection:text-black">
+        <div className="bg-transparent min-h-screen text-white font-sans selection:bg-[#61FFB1] selection:text-black">
             <Navbar />
 
             {/* Hero Section - Half Height */}
@@ -64,6 +66,8 @@ const CloudArchitecture = () => {
                         backgroundImage: `url("${import.meta.env.BASE_URL}cloud_hero.jpg")`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
+                        maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)',
+                        WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)'
                     }}
                 >
                     <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
@@ -204,41 +208,23 @@ const CloudArchitecture = () => {
                 </div>
 
                 {/* Who We Work With */}
-                <div className="py-24 bg-white/5 border-y border-white/5" ref={addToRefs}>
-                    <div className="container mx-auto px-6 text-center">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-12">Who We Work With</h2>
-                        <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-                            {[
-                                "Enterprise Organizations", "Financial Services", "Healthcare Providers",
-                                "SaaS Companies", "E-commerce Platforms", "Media & Entertainment"
-                            ].map((client, i) => (
-                                <span key={i} className="px-6 py-3 rounded-full bg-black border border-white/10 text-gray-300 text-sm md:text-base hover:border-[#61FFB1] hover:text-white transition-colors cursor-default">
-                                    {client}
-                                </span>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                <ClientCards
+                    clients={[
+                        "Enterprise Organizations", "Financial Services", "Healthcare Providers",
+                        "SaaS Companies", "E-commerce Platforms", "Media & Entertainment"
+                    ]}
+                />
 
-                {/* Engagement Approach */}
-                <div className="py-24 container mx-auto px-6" ref={addToRefs}>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Our Engagement Approach</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-                        {[
-                            { step: "01", title: "Discovery", desc: "Infrastructure & Cost Analysis" },
-                            { step: "02", title: "Design", desc: "Architecture & Security Design" },
-                            { step: "03", title: "Build", desc: "Migration & Implementation" },
-                            { step: "04", title: "Deploy", desc: "Rollout & Testing" },
-                            { step: "05", title: "Optimize", desc: "Monitor & Enhance" },
-                        ].map((phase, i) => (
-                            <div key={i} className="text-center group">
-                                <div className="text-6xl font-bold text-white/5 mb-4 group-hover:text-[#61FFB1]/20 transition-colors">{phase.step}</div>
-                                <h3 className="text-lg font-bold text-white mb-2">{phase.title}</h3>
-                                <p className="text-xs text-gray-500 uppercase tracking-wider">{phase.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                {/* Engagement Principles */}
+                <PrincipleCards
+                    title="Our Cloud Engagement Approach"
+                    principles={[
+                        { title: "Assessment First", desc: "We document every dependency and cost driver before writing a line of code, ensuring no surprises during migration." },
+                        { title: "Security by Design", desc: "We implement Zero Trust principles at the infrastructure level, treating identity as the new perimeter." },
+                        { title: "Automation Standard", desc: "If we do it twice, we automate it. verification, provisioning, and deployment are handled by code, not manual clicks." },
+                        { title: "Cost-Aware Architecture", desc: "We design for financial efficiency, utilizing spot instances, auto-scaling, and lifecycle policies to keep opex low." }
+                    ]}
+                />
 
                 <Contact />
                 <Footer />

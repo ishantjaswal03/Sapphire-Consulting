@@ -43,7 +43,7 @@ const Contact = () => {
     }, []);
 
     return (
-        <section id="contact" className="bg-black text-white py-24" ref={sectionRef}>
+        <section id="contact" className="bg-transparent text-white py-24" ref={sectionRef}>
             <div className="container mx-auto px-4">
                 <div className="text-center mb-24" ref={titleRef}>
                     <h2 className="title-with-lines mb-4">Start Your Project Journey</h2>

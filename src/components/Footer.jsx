@@ -5,7 +5,7 @@ import logo from '../assets/logo.png';
 
 const Footer = () => {
     return (
-        <footer className="relative bg-black pt-20 pb-10 overflow-hidden">
+        <footer className="relative bg-transparent pt-20 pb-10 overflow-hidden">
             {/* Background Glow Effects */}
             <div className="absolute bottom-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                 <div className="absolute bottom-[-20%] left-[-10%] w-[50%] h-[50%] bg-[#61FFB1]/5 rounded-full blur-[120px]" />
