@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Contact from '../components/Contact';
-import ElectricBorder from '../components/ElectricBorder';
+
 import NeonGlassCard from '../components/NeonGlassCard';
 import ProvenImpact from '../components/ProvenImpact';
 import PrincipleCards from '../components/PrincipleCards';
@@ -207,25 +207,23 @@ const EducationalPlatforms = () => {
                                     points: ["Multi-format content support", "SCORM/xAPI compliance", "Content sharing and reusability"]
                                 }
                             ].map((sol, i) => (
-                                <ElectricBorder key={i} color="#61FFB1" speed={1} chaos={0.3} thickness={1} style={{ borderRadius: 16 }}>
-                                    <div className="group p-6 h-full bg-black/40 backdrop-blur-sm rounded-2xl">
-                                        <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[#61FFB1] transition-colors flex items-center gap-3">
-                                            <span className="w-2 h-2 rounded-full bg-[#61FFB1] opacity-0 group-hover:opacity-100 transition-opacity" />
-                                            {sol.title}
-                                        </h3>
-                                        <p className="text-gray-300 mb-6 text-lg">{sol.desc}</p>
-                                        <ul className="space-y-2">
-                                            {sol.points.map((p, j) => (
-                                                <li key={j} className="flex items-start gap-3 text-gray-500 text-sm">
-                                                    <svg className="w-5 h-5 text-[#61FFB1] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                                    </svg>
-                                                    {p}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </ElectricBorder>
+                                <div key={i} className="group p-6 h-full bg-black/40 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-[#61FFB1]/50 transition-colors">
+                                    <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-[#61FFB1] transition-colors flex items-center gap-3">
+                                        <span className="w-2 h-2 rounded-full bg-[#61FFB1] opacity-0 group-hover:opacity-100 transition-opacity" />
+                                        {sol.title}
+                                    </h3>
+                                    <p className="text-gray-300 mb-6 text-lg">{sol.desc}</p>
+                                    <ul className="space-y-2">
+                                        {sol.points.map((p, j) => (
+                                            <li key={j} className="flex items-start gap-3 text-gray-500 text-sm">
+                                                <svg className="w-5 h-5 text-[#61FFB1] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                                                </svg>
+                                                {p}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
                             ))}
                         </div>
                     </div>
