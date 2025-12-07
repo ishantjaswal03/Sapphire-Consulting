@@ -11,6 +11,7 @@ const CloudArchitecture = lazy(() => import('./pages/CloudArchitecture'));
 const DataAnalytics = lazy(() => import('./pages/DataAnalytics'));
 
 import LiquidGlassDefinition from './components/LiquidGlassDefinition';
+import BackToTop from './components/BackToTop';
 
 function App() {
   const location = useLocation();
@@ -22,6 +23,7 @@ function App() {
   return (
     <>
       <LiquidGlassDefinition />
+      <BackToTop />
       <Suspense fallback={
         <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
           <div className="w-16 h-16 border-4 border-[#61FFB1] border-t-transparent rounded-full animate-spin"></div>
