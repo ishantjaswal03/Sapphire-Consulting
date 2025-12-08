@@ -1,33 +1,40 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown, ArrowRight, Code, Smartphone, Shield, BarChart, GraduationCap, Zap } from 'lucide-react';
 
 const expertises = [
     {
+        icon: Code,
         title: "Custom Software Development",
         desc: "Enterprise-grade applications built with modern technologies including React, Node.js, Python, and cloud platforms. We create scalable solutions that grow with your business needs.",
         img: "/exp_custom.png"
     },
     {
+        icon: Smartphone,
         title: "Mobile & Web Applications",
         desc: "Cross-platform mobile apps and responsive web applications designed for optimal user experience across all devices and platforms.",
         img: "/exp_mobile.png"
     },
     {
+        icon: Shield,
         title: "HIPAA & Compliance Solutions",
         desc: "Secure, compliant systems for healthcare and sensitive data handling. Expert implementation of HIPAA, GDPR, and industry-specific regulatory requirements.",
         img: "/exp_hipaa_final.png"
     },
     {
+        icon: BarChart,
         title: "MarTech & Analytics",
         desc: "Marketing technology platforms, customer analytics, and data-driven solutions to optimize marketing performance and customer engagement.",
         img: "/exp_martech.png"
     },
     {
+        icon: GraduationCap,
         title: "EdTech Solutions",
         desc: "Educational technology platforms including learning management systems, student portals, and interactive educational applications.",
         img: "/exp_edtech.png"
     },
     {
+        icon: Zap,
         title: "Digital Transformation",
         desc: "Strategic consulting and implementation to modernize legacy systems, optimize workflows, and drive digital innovation across your organization.",
         img: "/exp_digital.png"
@@ -76,24 +83,32 @@ const Expertise = () => {
                     ${activeIndex === index ? 'text-[#61FFB1]' : 'text-gray-300'}
                   `}
                                 >
-                                    <h3 className="text-xl md:text-3xl font-bold tracking-tight">
-                                        {item.title}
-                                    </h3>
+                                    <div className="flex items-center gap-4">
+                                        <div className={`
+                                            p-2 rounded-lg transition-colors duration-300
+                                            ${activeIndex === index ? 'bg-[#61FFB1]/10 text-[#61FFB1]' : 'bg-transparent text-gray-500 group-hover:text-white'}
+                                        `}>
+                                            <item.icon className="w-6 h-6" />
+                                        </div>
+                                        <h3 className="text-xl md:text-3xl font-bold tracking-tight">
+                                            {item.title}
+                                        </h3>
+                                    </div>
 
                                     {/* Chevron Icon (Mobile Only / Subtle Indicator) */}
                                     <span className={`
-                    lg:hidden text-2xl transition-transform duration-300
+                    lg:hidden transition-transform duration-300
                     ${activeIndex === index ? 'rotate-180 text-[#61FFB1]' : 'text-gray-600'}
                   `}>
-                                        ▼
+                                        <ChevronDown className="w-6 h-6" />
                                     </span>
 
                                     {/* Desktop Active Indicator */}
                                     <span className={`
-                    hidden lg:block text-2xl transition-all duration-300 opacity-0 -translate-x-4
+                    hidden lg:block transition-all duration-300 opacity-0 -translate-x-4
                     ${activeIndex === index ? 'opacity-100 translate-x-0 text-[#61FFB1]' : ''}
                   `}>
-                                        →
+                                        <ArrowRight className="w-6 h-6" />
                                     </span>
                                 </button>
 
@@ -126,7 +141,7 @@ const Expertise = () => {
                                             animate={{ height: "auto", opacity: 1 }}
                                             exit={{ height: 0, opacity: 0 }}
                                             transition={{ duration: 0.3, ease: "easeInOut" }}
-                                            className="overflow-hidden"
+                                            className="overflow-hidden pl-[4.5rem]"
                                         >
                                             <p className="text-gray-400 text-lg leading-relaxed lg:max-w-xl pb-4">
                                                 {item.desc}

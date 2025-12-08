@@ -1,12 +1,19 @@
+/* Default (Mobile) Logic */
+.desktop-nav-menu {
+    display: none;
+}
+
+/* Existing styles remain for mobile (hamburger, etc.) */
 .card-nav-container {
     position: absolute;
     top: 2em;
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
-    max-width: 800px;
+    max-width: 1000px;
     z-index: 99;
     box-sizing: border-box;
+    /* Ensure height is not fixed on container, but let nav dictate it */
 }
 
 .card-nav {
@@ -18,13 +25,14 @@
     border-radius: 0.75rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     position: relative;
-    overflow: hidden;
+    overflow: visible;
+    /* Changed from hidden to visible for desktop dropdowns, but this might affect mobile animation. 
+                          GSAP controls height/overflow on mobile animation anyway. Checking... */
     will-change: height;
 }
 
 /* Liquid Glass Styles Integration */
 .liquidGlass-wrapper {
-    /* Force transparency so the backdrop filter works, overriding inline styles */
     background-color: transparent !important;
     position: relative;
     transition: height 0.2s ease, transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 2.2);
@@ -39,19 +47,17 @@
     overflow: hidden;
     isolation: isolate;
     pointer-events: none;
+    border-radius: 0.75rem;
+    /* Ensure radius clips effect */
 }
 
 .liquidGlass-tint {
     z-index: 1;
     position: absolute;
     inset: 0;
-    /* Use a dark tint if the original was black, or keep user's white tint? 
-     User asked for "this" style (white). But site is dark. 
-     I'll stick to the user's white tint but maybe reduce opacity if it's too bright?
-     Let's define it as is first. */
     background: rgba(255, 255, 255, 0.1);
-    /* Reduced opacity for dark mode compatibility */
     pointer-events: none;
+    border-radius: 0.75rem;
 }
 
 .liquidGlass-shine {
@@ -63,7 +69,6 @@
         inset -1px -1px 1px 1px rgba(255, 255, 255, 0.5);
     pointer-events: none;
     border-radius: 0.75rem;
-    /* Match card-nav border radius */
 }
 
 .liquidGlass-text {
@@ -218,6 +223,184 @@
     opacity: 0.75;
 }
 
+/* ---------------------------------------------------- */
+/* DESKTOP DESGIN (> 768px) */
+/* ---------------------------------------------------- */
+
+@media (min-width: 769px) {
+
+    /* HIDE STRUCTURES */
+    .hamburger-menu {
+        display: none;
+    }
+
+    /* CARD NAV TOP LAYOUT - RESET */
+    .card-nav-top {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        /* Logo | Nav */
+        gap: 2rem;
+        padding: 0 1.5rem;
+        /* More horizontal padding */
+        position: relative;
+        /* Keep absolute/relative context */
+        height: 100%;
+    }
+
+    /* LOGO RESET - Move from center to Left */
+    .logo-container {
+        position: static;
+        transform: none;
+        order: 0;
+        margin-right: auto;
+        /* Push everything else right if flex, but grid handles it */
+        margin-right: 0;
+    }
+
+    /* DESKTOP NAV MENU */
+    .desktop-nav-menu {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 2rem;
+        height: 100%;
+    }
+
+    .desktop-nav-item {
+        position: relative;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .desktop-nav-label {
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: all 0.2s ease;
+        padding: 0.5rem 1rem;
+        /* More padding for pill shape */
+        border-radius: 20px;
+        /* Pill shape */
+    }
+
+    .desktop-nav-item:hover .desktop-nav-label {
+        color: #fff;
+        background: rgba(255, 255, 255, 0.15);
+        /* Highlight pill */
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+        /* Subtle glow */
+    }
+
+    /* DROPDOWN MENU */
+    .desktop-nav-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) translateY(8px);
+        /* Start slightly lower */
+        width: max-content;
+        min-width: 200px;
+        opacity: 0;
+        pointer-events: none;
+        /* Smoother transition */
+        transition:
+            opacity 0.25s ease,
+            transform 0.25s cubic-bezier(0.165, 0.84, 0.44, 1),
+            visibility 0.25s;
+        z-index: 100;
+        padding-top: 6px;
+        /* Decreased gap */
+        visibility: hidden;
+    }
+
+    .desktop-nav-item:hover .desktop-nav-dropdown {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0);
+        visibility: visible;
+    }
+
+    .desktop-glass-panel {
+        background: transparent;
+        /* Rely on liquid glass effect */
+        /* backdrop-filter: blur(12px); REMOVED - managed by liquidGlass-effect */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        position: relative;
+        /* Context for absolute liquid elements */
+        overflow: hidden;
+        /* Clip the liquid effect */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Ensure liquid glass elements inside dropdown fill the panel */
+    .desktop-glass-panel .liquidGlass-effect,
+    .desktop-glass-panel .liquidGlass-tint,
+    .desktop-glass-panel .liquidGlass-shine {
+        border-radius: 12px;
+        /* Match panel radius */
+    }
+
+    /* DARKER TINT FOR DROPDOWN */
+    .desktop-glass-panel .liquidGlass-tint {
+        background: rgba(0, 0, 0, 0.85);
+        /* Much darker background for visibility */
+    }
+
+    .desktop-glass-panel .liquidGlass-text {
+        padding: 0.5rem;
+        /* Padding moves here from panel */
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .desktop-nav-link {
+        display: block;
+        padding: 0.75rem 1rem;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        font-size: 0.9rem;
+        border-radius: 8px;
+        transition: all 0.2s;
+        white-space: nowrap;
+    }
+
+    .desktop-nav-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+    }
+
+    /* Ensure container overflow is visible for dropdowns */
+    .card-nav {
+        overflow: visible !important;
+    }
+
+    .liquidGlass-effect,
+    .liquidGlass-tint,
+    .liquidGlass-shine {
+        /* Keep background rounded but let content spill if needed? 
+           Actually no, the background elements should stay contained to the bar.
+           The dropdown is separate.
+        */
+        overflow: hidden;
+        /* Keep effects contained to the pill */
+    }
+
+    /* Reset CTA Button */
+    .card-nav-cta-button {
+        position: static;
+        order: 2;
+        margin-left: auto;
+        /* Push to right if flex, standard for grid */
+    }
+}
+
+/* ---------------------------------------------------- */
+/* MOBILE OVERRIDES (< 768px) */
+/* ---------------------------------------------------- */
 @media (max-width: 768px) {
     .card-nav-container {
         width: 90%;
@@ -227,6 +410,11 @@
     .card-nav-top {
         padding: 0.5rem 1rem;
         justify-content: space-between;
+    }
+
+    .card-nav {
+        overflow: hidden;
+        /* Clip mobile expansion animation */
     }
 
     .hamburger-menu {

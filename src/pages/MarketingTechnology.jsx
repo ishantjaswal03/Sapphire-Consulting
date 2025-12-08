@@ -1,15 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Contact from '../components/Contact';
 
-import NeonGlassCard from '../components/NeonGlassCard';
-import ProvenImpact from '../components/ProvenImpact';
+
 import PrincipleCards from '../components/PrincipleCards';
 import ClientCards from '../components/ClientCards';
 import ChromaGrid from '../components/ChromaGrid';
+import JourneyCards from '../components/JourneyCards';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,6 +18,9 @@ const MarketingTechnology = () => {
     const heroRef = useRef(null);
     const titleRef = useRef(null);
     const sectionsRef = useRef([]);
+
+    const { scrollY } = useScroll();
+    const y = useTransform(scrollY, [0, 500], [0, 200]);
 
     useEffect(() => {
         // Hero Animation
@@ -55,15 +59,16 @@ const MarketingTechnology = () => {
     };
 
     return (
-        <div className="bg-transparent min-h-screen text-white font-sans selection:bg-[#61FFB1] selection:text-black">
+        <div className="bg-black min-h-screen text-white font-sans selection:bg-[#61FFB1] selection:text-black">
             <Navbar />
 
             {/* Hero Section - Half Height */}
             <div className="relative h-[50vh] min-h-[500px] flex items-center justify-center overflow-hidden">
-                <div
+                <motion.div
                     ref={heroRef}
                     className="absolute inset-0 z-0"
                     style={{
+                        y,
                         backgroundImage: `url("${import.meta.env.BASE_URL}marketing_hero.jpg")`,
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
@@ -72,7 +77,7 @@ const MarketingTechnology = () => {
                     }}
                 >
                     <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black" />
-                </div>
+                </motion.div>
 
                 <div className="relative z-10 text-center px-6 max-w-5xl mx-auto mt-16" ref={titleRef}>
                     <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight tracking-tight">
@@ -100,10 +105,8 @@ const MarketingTechnology = () => {
                     </div>
                 </div>
 
-
-
                 {/* Why Choose Sapphire */}
-                <div className="py-24 bg-white/5 border-y border-white/5" ref={addToRefs}>
+                <div className="py-24" ref={addToRefs}>
                     <div className="container mx-auto px-6">
                         <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Why Marketing Teams Choose Sapphire</h2>
                         <div style={{ position: 'relative' }}>
@@ -161,17 +164,8 @@ const MarketingTechnology = () => {
                     </div>
                 </div>
 
-                <ProvenImpact
-                    backgroundImage={`${import.meta.env.BASE_URL}marketing_hero.jpg`}
-                    stats={[
-                        { val: "3x", label: "ROI Improvement", sub: "through personalized campaigns and automation" },
-                        { val: "50%", label: "Higher Engagement", sub: "across all digital channels" },
-                        { val: "20%", label: "Churn Reduction", sub: "with predictive retention strategies" }
-                    ]}
-                />
-
                 {/* Key Solutions */}
-                <div className="py-24 bg-white/5 border-y border-white/5" ref={addToRefs}>
+                <div className="py-24" ref={addToRefs}>
                     <div className="container mx-auto px-6">
                         <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Key Solutions</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
@@ -230,22 +224,16 @@ const MarketingTechnology = () => {
                 </div>
 
                 {/* Transformation Journey */}
-                <div className="py-24 container mx-auto px-6" ref={addToRefs}>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-16 text-center">Marketing Transformation Across the Customer Journey</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                        {[
-                            { stage: "Awareness", items: "SEO, paid ads, social media, content marketing, influencer partnerships, brand discovery." },
-                            { stage: "Consideration", items: "Email nurture, retargeting, product comparisons, reviews, personalized content." },
-                            { stage: "Conversion", items: "Landing pages, checkout optimization, cart recovery, personalized offers, upsells." },
-                            { stage: "Retention", items: "Loyalty programs, subscription management, personalized communications, customer advocacy." },
-                        ].map((step, i) => (
-                            <div key={i} className="relative p-8 rounded-2xl bg-[#111] border border-white/5 overflow-hidden group">
-                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#61FFB1] to-transparent opacity-50 group-hover:opacity-100 transition-opacity" />
-                                <h3 className="text-xl font-bold mb-4 text-white">{step.stage}</h3>
-                                <p className="text-gray-400 text-sm leading-relaxed">{step.items}</p>
-                            </div>
-                        ))}
-                    </div>
+                <div className="pt-24 pb-2 container mx-auto px-6" ref={addToRefs}>
+                    <h2 className="title-with-lines mb-16 text-center">Marketing Transformation Across the Customer Journey</h2>
+                    <JourneyCards
+                        steps={[
+                            { id: 1, stage: "Awareness", items: "SEO, paid ads, social media, content marketing, influencer partnerships, brand discovery." },
+                            { id: 2, stage: "Consideration", items: "Email nurture, retargeting, product comparisons, reviews, personalized content." },
+                            { id: 3, stage: "Conversion", items: "Landing pages, checkout optimization, cart recovery, personalized offers, upsells." },
+                            { id: 4, stage: "Retention", items: "Loyalty programs, subscription management, personalized communications, customer advocacy." }
+                        ]}
+                    />
                 </div>
 
                 {/* Who We Work With */}

@@ -1,7 +1,7 @@
 import { useLayoutEffect, useRef, useState, useEffect } from 'react';
 import { gsap } from 'gsap';
 import { Link, useLocation } from 'react-router-dom';
-import { GoArrowUpRight } from 'react-icons/go';
+import { ArrowUpRight } from 'lucide-react';
 import './CardNav.css';
 
 const CardNav = ({
@@ -38,6 +38,7 @@ const CardNav = ({
         if (!navEl) return 260;
 
         const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        if (!isMobile) return 60; // Standard desktop bar height
         if (isMobile) {
             const contentEl = navEl.querySelector('.card-nav-content');
             if (contentEl) {
@@ -184,15 +185,38 @@ const CardNav = ({
                             {companyName && <span className="company-name">{companyName}</span>}
                         </Link>
 
-                        <a
-                            href="#contact"
-                            className="card-nav-cta-button"
-                            style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
-                            onClick={(e) => handleLinkClick(e, '#contact')}
-                        >
-                            Contact Us
-                        </a>
+                        <div className="desktop-nav-menu">
+                            {items.map((item, index) => (
+                                <div key={index} className="desktop-nav-item">
+                                    <span className="desktop-nav-label">{item.label}</span>
+                                    <div className="desktop-nav-dropdown">
+                                        <div className="desktop-glass-panel">
+                                            <div className="liquidGlass-effect"></div>
+                                            <div className="liquidGlass-tint"></div>
+                                            <div className="liquidGlass-shine"></div>
+                                            <div className="liquidGlass-text">
+                                                {item.links.map((link, linkIndex) => (
+                                                    link.href.startsWith('/') && !link.href.startsWith('//') ? (
+                                                        <Link key={linkIndex} to={link.href} className="desktop-nav-link">
+                                                            {link.label}
+                                                        </Link>
+                                                    ) : (
+                                                        <a key={linkIndex} href={link.href} className="desktop-nav-link">
+                                                            {link.label}
+                                                        </a>
+                                                    )
+                                                ))}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+
                     </div>
+
+
 
                     <div className="card-nav-content" aria-hidden={!isExpanded}>
                         {(items || []).slice(0, 3).map((item, idx) => (
@@ -207,7 +231,7 @@ const CardNav = ({
                                     {item.links?.map((lnk, i) => (
                                         lnk.href.startsWith('/') && !lnk.href.startsWith('//') ? (
                                             <Link key={`${lnk.label}-${i}`} className={`nav-card-link ${lnk.mobileOnly ? 'mobile-only-link' : ''}`} to={lnk.href} aria-label={lnk.ariaLabel}>
-                                                <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
+                                                <ArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
                                                 {lnk.label}
                                             </Link>
                                         ) : (
@@ -218,7 +242,7 @@ const CardNav = ({
                                                 aria-label={lnk.ariaLabel}
                                                 onClick={(e) => handleLinkClick(e, lnk.href)}
                                             >
-                                                <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
+                                                <ArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
                                                 {lnk.label}
                                             </a>
                                         )

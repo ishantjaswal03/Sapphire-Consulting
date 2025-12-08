@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import './CardNav.css'; // Import liquid glass styles
 
 gsap.registerPlugin(ScrollTrigger);
@@ -12,6 +13,9 @@ const Hero = () => {
     const headlineRef = useRef(null);
     const descriptionRef = useRef(null);
     const buttonRef = useRef(null);
+
+    const { scrollY } = useScroll();
+    const y = useTransform(scrollY, [0, 1000], [0, 400]); // Moves background at 40% speed
 
     useEffect(() => {
         const video = videoRef.current;
@@ -93,31 +97,36 @@ const Hero = () => {
                 WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)'
             }}
         >
-            <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                ref={videoRef}
-                className="absolute top-0 left-0 w-full h-full object-cover z-0 blur-sm transition-opacity duration-1000"
-                id="hero-video"
+            <motion.div
+                style={{ y }}
+                className="absolute inset-0 w-full h-full z-0"
             >
-                <source src={`${import.meta.env.BASE_URL}Hero_section_background.mp4`} type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-            <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                ref={videoReverseRef}
-                className="absolute top-0 left-0 w-full h-full object-cover z-0 blur-sm transition-opacity duration-1000 opacity-0"
-                id="hero-video-reverse"
-            >
-                <source src={`${import.meta.env.BASE_URL}Hero_section_background.mp4`} type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-            <div id="hero-overlay" className="absolute top-0 left-0 w-full h-full bg-black opacity-60 z-10"></div>
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    ref={videoRef}
+                    className="absolute top-0 left-0 w-full h-full object-cover blur-sm transition-opacity duration-1000"
+                    id="hero-video"
+                >
+                    <source src={`${import.meta.env.BASE_URL}Hero_section_background.mp4`} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    ref={videoReverseRef}
+                    className="absolute top-0 left-0 w-full h-full object-cover blur-sm transition-opacity duration-1000 opacity-0"
+                    id="hero-video-reverse"
+                >
+                    <source src={`${import.meta.env.BASE_URL}Hero_section_background.mp4`} type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+                <div id="hero-overlay" className="absolute top-0 left-0 w-full h-full bg-black opacity-60 z-10"></div>
+            </motion.div>
             <div id="hero-content" className="container mx-auto px-4 relative z-20 text-center py-28" ref={heroContentRef}>
                 <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-6 max-w-4xl mx-auto" ref={headlineRef}>
                     <span className="text-glow-green">Transform</span> Your <span className="text-glow-green">Business</span> with{' '}
