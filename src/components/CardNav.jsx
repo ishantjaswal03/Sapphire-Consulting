@@ -201,7 +201,12 @@ const CardNav = ({
                                                             {link.label}
                                                         </Link>
                                                     ) : (
-                                                        <a key={linkIndex} href={link.href} className="desktop-nav-link">
+                                                        <a
+                                                            key={linkIndex}
+                                                            href={link.href}
+                                                            className="desktop-nav-link"
+                                                            onClick={(e) => handleLinkClick(e, link.href)}
+                                                        >
                                                             {link.label}
                                                         </a>
                                                     )

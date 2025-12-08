@@ -166,7 +166,11 @@ const ContactForm = () => {
                     </div>
 
                     <div className="pt-2">
-                        <button type="submit" disabled={isSubmitting}>
+                        <button
+                            type="submit"
+                            disabled={isSubmitting}
+                            className="w-full py-4 rounded-lg bg-[#61FFB1] text-black font-bold text-lg hover:bg-[#4FE39B] transition-all transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_20px_rgba(97,255,177,0.3)] hover:shadow-[0_0_30px_rgba(97,255,177,0.5)]"
+                        >
                             <div>
                                 <span>{isSubmitting ? 'Sending...' : 'Send Project Request'}</span>
                             </div>
